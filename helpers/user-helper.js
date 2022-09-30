@@ -388,7 +388,7 @@ module.exports = {
       try {
         const crypto = require("crypto");
         let expectedSignature = crypto.createHmac(
-          "sha256",
+          process.env.RAZ_SHA,
           process.env.RAZ_SECRET
         );
         expectedSignature.update(

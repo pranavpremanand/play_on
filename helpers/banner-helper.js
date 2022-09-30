@@ -1,6 +1,6 @@
 const multer = require("multer");
 const bannerModel = require("../models/banner-model");
-
+// const fs = require('fs')
 //CONFIGURATION OF MULTER
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -31,6 +31,8 @@ exports.uploadBanner = upload.single("image");
 exports.addBanner = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
+      // const bannerInfo = await findOne().lean()
+      // fs.unlink bannerInfo.image
       await bannerModel.deleteMany();
       const bannerData = {
         title: data.title,
