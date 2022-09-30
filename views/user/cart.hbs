@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/styles/single_styles.css">
+<link rel="stylesheet" type="text/css" href="/styles/single_responsive.css">
+
+{{!-- <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css"> --}}
+<link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+{{!-- <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/responsive.css"> --}}
+{{!-- <link rel="stylesheet" href="public/stylesheets/style.css" type="text/css"> --}}
+<link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> --}}
+  </head>
+    <style>
+    @media (max-width:576px){
+      .price-div{
+        margin-top: 0;
+        padding: 0;
+      }
+    }
+     @media (min-width:576px){
+      .price-div{
+        margin-top: 0px;
+        padding: 45px;
+      }
+    }
+  </style>
+  {{#if items}}
+  <body class="mt-5">
+<section class="h-100 h-custom mt-5" style="background-color: #FFFFFF;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <h4 class="fw-bold mb-0 text-black mr-2">My Cart</h4>
+                    <i style="font-size: 1.5rem;" class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    {{!-- <h6 id="cart-items" class="mb-0 text-muted"></h6> --}}
+                  </div>
+                  {{!-- <span id="cart-items" class="mb-0 text-muted"></span><span class="text-muted">&nbsp; items</span> --}}
+                  {{!-- <hr class="my-4"> --}}
+
+
+                  <hr class="my-4">
+
+                  <div id="products" class="row mb-4 d-flex justify-content-evenly align-items-center">
+                    {{#each items}}
+                    {{!-- <div class=""> --}}
+                      <hr>
+                    <div class="col-4 col-md-2 col-lg-2 col-xl-2 mb-2">
+                      <a href="/singleProduct/{{this.productID._id}}"><img style="w"
+                        src="/images/products/{{this.productID.images.[0]}}"
+                        class="img-fluid rounded-3" alt=""></a>
+                        
+                    </div>
+                    <div class="col-8 col-md-4 col-lg-4 col-xl-4 mb-1">
+                      {{!-- <h6 class="text-muted">{{this.productID.category}}</h6> --}}
+                      <h6 class="text-black">{{this.productID.name}}</h6>
+                      {{!-- <h6>{{../ID}}</h6> --}}
+                    </div>
+                    <div class="col-4 col-md-2 col-lg-2 col-xl-2 d-flex mb-2">
+                     {{!-- <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                       
+                      </button>
+
+                      <input id="form1" name="quantity" value="{{this.quantity}}" type="number"
+                        class="form-control form-control-sm text-dark" />
+
+                      <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                       
+                      </button> --}}
+                      <div class="d-flex flex-row">
+                       
+                        {{#if (gt this.quantity 1)}}
+                    <button class="btn btn-link px-2"
+                      onclick="changeQuantity('{{this.productID._id}}','{{../ID}}',-1); costOfCartItems()">
+                      <i class="fa fa-minus-circle text-secondary" aria-hidden="true"></i>
+                    </button>
+                    {{!-- {{else if (eq this.quantity 0)}}
+                    <button class="btn btn-link px-2"
+                      onclick="removeFromCart('{{this.productID._id}}','{{../ID}}',-1); costOfCartItems()">
+                      <i class="fa fa-minus-circle text-secondary" aria-hidden="true"></i>
+                    </button> --}}
+                    {{else}}
+                     <button disabled class="btn btn-link px-2"
+                      onclick="changeQuantity('{{this.productID._id}}','{{../ID}}',-1); costOfCartItems()">
+                      <i class="fa fa-minus-circle text-secondary" aria-hidden="true"></i>
+                    </button>
+                    {{/if}}
+                    
+                    <span id="{{this.productID._id}}" name="quantity" type="number"
+                      class="text-center form-control form-control-sm text-dark" style="width: 40px;">{{this.quantity}}</span>
+                    <button class="btn btn-link px-2"
+                     onclick="changeQuantity('{{this.productID._id}}','{{../ID}}',1); costOfCartItems()">
+                      {{!-- onclick="this.parentNode.querySelector('input[type=number]').stepUp()"> --}}
+                      {{!-- <i class="fas fa-plus"></i> --}}
+                      {{!-- <i class="fa fa-plus" aria-hidden="true"></i> --}}
+                      <i class="fa fa-plus-circle text-secondary" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                    </div>
+                    <div class="col-5 col-md-2 col-lg-2 col-xl-2 ml-4 offset-lg-1 mb-2">
+                      <h6 class="mb-0">₹{{this.productID.sellingPrice}}</h6>
+                    </div>
+                    <div class="col-1 col-md-1 col-lg-1 col-xl-1 text-end mb-2">
+                       {{!-- <a href="/removeFromCart/{{this.productID._id}}" class="text-muted"><i class="fa fa-trash-o"></i></a> --}}
+                      <a onclick="removeFromCart('{{this.productID._id}}')" class="text-muted"><i style="font-size: 1.2rem; color:rgb(255, 0, 0);" class="fa fa-trash-o"></i></a>
+                        {{!-- <button style="border: none; border-radius:20 ; background-color: transparent;" onclick="removeFromCart('{{this.productID._id}}')"  class="text-muted"><i class="fa fa-trash-o"></i></button> --}}
+                    </div>
+                    {{!-- </div> --}}
+                    {{/each}}
+                  </div>
+                  
+
+                  
+
+                  <hr class="my-4">
+
+                  <div class="pt-0">
+                    <h6 class="mb-0"><a href="/" class="text-body"><i
+                          class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4 bg-grey d-flex pt-1 justify-content-center">
+                
+                <div class="price-div mt-2" style="width: 100%;">
+                  <h4 class="fw-bold text-center">Price Details<hr></h4>
+                  {{!-- <hr class=""> --}}
+                   <div class="d-flex justify-content-between mb-2">
+                    <div>
+                      {{!-- <span class="mb-0"></span><span class="">&nbsp; ITEMS</span> --}}
+                    </div>
+                    {{!-- <div> --}}
+                     
+                    {{!-- </div> --}}
+                    </div>
+                  {{!-- <h6 class="text-uppercase">Payment method</h6>
+                  <div class="mb-4 pb-2">
+                    <select class="select " style="border-radius:10px ;">
+                      <option class="options" value="1">Cash on Delivery</option>
+                      <option class="options" value="2">Razor Pay</option>
+
+                    </select>
+                  </div> --}}
+
+                  {{!-- <h6 class="text-uppercase text-center">Apply Coupon</h6> --}}
+
+                  {{!-- <div class="mb-2">
+                    <div class="form-outline">
+                      <input style="height: 40px;" placeholder="Enter your code" type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                      <div class="form-floating mb-4">
+                      
+                    </div>
+                  </div> --}}
+                  {{#if login}}
+                  <div onload="count()" class="d-flex justify-content-between px-3 mb-2">
+                    {{!-- <h6 class="text-uppercase">Subtotal ( <span class="text-right" id="cart-items"> </span> Items )</h6> --}}
+                    {{!-- <span class="text-right products">₹ <span id="total-cost">{{cost}}</span></span> --}}
+                    <h6 class="text-uppercase">Items count</h6>
+                    <span name="items" class="text-right " id="cart-items"></span>
+                  </div>
+                  {{else}}
+                  <div class="d-flex justify-content-between px-3 mb-2">
+                    {{!-- <h6 class="text-uppercase">Subtotal ( <span class="text-right" id="cart-items"> </span> Items )</h6> --}}
+                    {{!-- <span class="text-right products">₹ <span id="total-cost">{{cost}}</span></span> --}}
+                    <h6 class="text-uppercase">Items </h6>
+                    <span name="items" class="text-right" id="cart-items"></span>
+                  </div>
+                  {{/if}}
+                  <div class="d-flex justify-content-between px-3 mb-2">
+                    
+                    <h6 class="text-uppercase">Delivery charges</h6>
+                    <span name="delivery-charges" class="text-right text-success" id="">FREE</span>
+                  </div>
+                  <div class="d-flex justify-content-between px-3 mb-2">
+                    {{!-- <h6 class="text-uppercase">Subtotal ( <span class="text-right" id="cart-items"> </span> Items )</h6> --}}
+                    {{!-- <span class="text-right products">₹ <span id="total-cost">{{cost}}</span></span> --}}
+                    <h6 class="text-uppercase">Subtotal</h6>
+                    <span class="text-left products">₹ <span name="final-cost" id="total-cost">{{cost}}</span></span>
+                  </div>
+                  {{!-- <div class="d-flex justify-content-between">
+                    <h6 class="text-uppercase">Discount</h6>
+                    <span class="text-right">₹<span>0</span></span>
+                  </div> --}}
+                  {{!-- <hr class="my-4"> --}}
+                  {{!-- <div class="d-flex justify-content-between mb-3 products"> --}}
+                    {{!-- <h6 class="text-uppercase">Total price</h6> --}}
+                    {{!-- <span class="text-right products">₹ <span id="total-cost">{{cost}}</span></span> --}}
+                  {{!-- </div> --}}
+                    <div class="px-3 mb-5">
+                  <a href="/checkout" type="button" class="text-white fw-bold btn btn-danger btn-block btn-sm"
+                    data-mdb-ripple-color="dark">GO TO CHECKOUT</a>
+                    </div>
+                    
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/javascripts/user-script.js"></script>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="/js/single_custom.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.js"></script>
+{{!-- <script src="js/jquery-3.2.1.min.js"></script> --}}
+{{!-- <script src="styles/bootstrap4/popper.js"></script> --}}
+{{!-- <script src="styles/bootstrap4/bootstrap.min.js"></script> --}}
+{{!-- <script src="plugins/Isotope/isotope.pkgd.min.js"></script> --}}
+{{!-- <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script> --}}
+{{!-- <script src="plugins/easing/easing.js"></script> --}}
+<script src="/js/custom.js"></script>
+    {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> --}}
+  </body>
+</html>
+
+<script>
+    @media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+top: 13px;
+}
+
+.bg-grey {
+background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+.card-registration-2 .bg-grey {
+border-top-right-radius: 16px;
+border-bottom-right-radius: 16px;
+}
+}
+
+@media (max-width: 991px) {
+.card-registration-2 .bg-grey {
+border-bottom-left-radius: 16px;
+border-bottom-right-radius: 16px;
+}
+}
+</script>
+<script>
+		document.addEventListener('DOMContentLoaded',count);
+		function count(){
+						axios({
+							method: "get",
+							url: "/count"
+							})
+							.then(function (response) {
+								//handle success
+								if(response.data === 0){
+									document.getElementById('cart-items').innerHTML = ''
+								}else{
+									document.getElementById('cart-items').innerHTML = response.data
+								}
+							})
+							.catch(function (response) { 
+								//handle error
+								console.log(response)
+						});
+		}
+	</script>
+{{else}}
+<!-- Libs CSS -->
+<link rel="stylesheet" href="../assets/libs/ion-rangeslider/css/ion.rangeSlider.min.css">
+<link rel="stylesheet" href="../assets/libs/litepicker/dist/css/litepicker.css">
+<link rel="stylesheet" href="../assets/libs/bootstrap-icons/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../assets/libs/magnific-popup/dist/magnific-popup.css">
+
+
+    <style>
+    @media (max-width:576px){
+      .main{
+        margin-top: 55px;
+        padding: 30px;
+      }
+    }
+     @media (min-width:577px){
+      .main{
+        margin-top: 50px;
+        padding: 65px;
+      }
+    }
+  </style>
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="../assets/css/theme-rtl.min.css">
+</head>
+<body>
+
+    <!-- pageheader section -->
+    <div class="bg-shape main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="pt-lg-18 pb-lg-14 pt-14 pb-12  ">
+                        {{!-- <h1 class="h2 text-white">Shop</h1> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- shop empty page -->
+    <div class="py-6 py-lg-12">
+        <div class="container">
+            <div class="row">
+                <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
+                    <img src="https://codescandy.com/coach/rtl/assets/images/bag.svg" alt="" class="img-fluid mb-4" />
+                    <h2>Your shopping cart is empty</h2>
+                    <p class="mb-4">
+                        Return to the store to add items for your delivery slot. Before proceed to checkout you must add some products to your shopping cart. You will find a lot of interesting products on our shop page.
+                    </p>
+                    <a href="/" class="btn btn-dark btn-sm">Explore Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+
+
+    <!-- Libs JS -->
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<script src="../assets/libs/prismjs/prism.js"></script>
+<script src="../assets/libs/leaflet/dist/leaflet.js"></script>
+<script src="../assets/libs/litepicker/dist/litepicker.js"></script>
+<script src="../assets/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+<script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+
+<!-- clipboard -->
+<script src="../../../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+<!-- Theme JS -->
+<script src="../assets/js/theme.min.js"></script>
+</body>
+{{/if}}

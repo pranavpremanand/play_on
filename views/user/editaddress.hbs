@@ -1,0 +1,182 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/styles/single_styles.css">
+<link rel="stylesheet" type="text/css" href="/styles/single_responsive.css">
+</head>
+<style>
+@media (min-width: 300px) and (max-width: 992px){
+    .main{
+        padding-top: 120px;
+    }
+}
+@media (min-width: 992px){
+    .main{
+        padding-top: 180px;
+    }
+}
+</style>
+{{>user-header}}
+<div class="container main">
+<div class="row d-flex justify-content-center">
+  <div class="col-md-5 mb-4">
+    <div id="card" class="card mb-4">
+      <div class="card-header py-3">
+        <h5 class="mb-0 text-center">Edit Address</h5>
+      </div>
+      <div class="card-body">
+        <form class="text-danger" id="form"
+        {{!-- action="/edited-address/{{data._id}}" method="post" --}}
+        >
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline text-dark">
+                <label class="form-label" for="form7Example1">Full name</label>
+                <input name="fullName" value="{{data.fullName}}" required type="text" id="fullName" class="form-control text-dark" />
+                
+              </div>
+            </div>
+            {{!-- <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form7Example2" class="form-control" />
+                <label class="form-label" for="form7Example2">Last name</label>
+              </div>
+            </div> --}}
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline mb-4 text-dark">
+            <label class="form-label" for="form7Example6">Phone</label>
+            <input name="mobile" value="{{data.mobile}}" required type="tel" id="mobile" class="form-control text-dark" />
+            
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline mb-4 text-dark">
+                        <label class="form-label" for="form7Example6">Pincode</label>
+            <input name="pincode" value="{{data.pincode}}" required type="tel" id="pincode" class="form-control text-dark" />
+
+          </div>
+
+          <!-- Text input -->
+          <div class="form-outline mb-4 text-dark">
+            <label class="form-label" for="form7Example3">Flat, House no., Building, Company, Apartment</label>
+            
+            <input name="building"  value="{{data.building}}" required class="form-control text-dark" id="building" rows="3"></input>
+            
+          </div>
+
+          <!-- Text input -->
+          <div class="form-outline mb-4 text-dark">
+            <label class="form-label" for="form7Example4">Area, Street, Sector, Village</label>
+            <input name="area" value="{{data.area}}" required type="text" id="area" class="form-control text-dark" />
+
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4 text-dark">
+            <label class="form-label" for="form7Example5">Landmark</label>
+            <input name="landmark" value="{{data.landmark}}" required type="text" id="landmark" class="form-control text-dark" />
+            
+          </div>
+
+          <!-- Message input -->
+          <div class="form-outline mb-4 text-dark">
+            <label class="form-label" for="form7Example7">District</label>
+            <input name="district" value="{{data.district}}" required type="text" id="district" class="form-control text-dark" />
+            
+          </div>
+
+          <!-- Checkbox -->
+          <div class="form-check d-flex justify-content-center mb-2">
+            <button onclick="updateAddress('{{data._id}}')" type="submit" style="width: 100%;" class="btn btn-danger">Submit</button>
+            {{!-- <input class="form-check-input me-2" type="checkbox" value="" id="form7Example8" checked /> --}}
+            {{!-- <label class="form-check-label" for="form7Example8"> --}}
+              {{!-- Create an account? --}}
+            {{!-- </label> --}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+{{>user-footer}}
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+  </script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js">
+  </script>
+<script>
+  $("#form").validate({
+    rules: {
+          fullName: {
+            required: true,
+          },
+          mobile: {
+            required: true,
+            digits: true,
+            minlength: 10,
+            maxlength: 10
+          },
+          pincode: {
+            required: true,
+            digits: true,
+            minlength: 6,
+            maxlength: 6
+          },
+          building: {
+            required: true
+          },
+          area: {
+            required: true
+          },
+          landmark: {
+            required: true
+          },
+          district: {
+            required: true
+          }
+        },
+        messages: {
+          fullName: {
+            required: 'Enter your full name'
+          },
+          mobile: {
+            required: 'Enter your mobile number',
+            digits: 'Enter digits',
+            minlength: 'Enter a valid mobile number',
+            maxlength: 'Enter a valid mobile number'
+          },
+          pincode: {
+            required: 'Enter your pincode',
+            digits: 'Enter digits',
+            minlength: 'Enter a valid pincode',
+            maxlength: 'Enter a valid pincode'
+          },
+          building:{
+            required :"Enter your building name"
+          },
+          area:{
+            required : 'Enter your area name'
+          },
+          landmark:{
+            required: 'Enter a landmark'
+          },
+          district: {
+            required: 'Enter your district'
+          }
+        }
+  })
+</script>
+<script src="/javascripts/user-script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

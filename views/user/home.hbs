@@ -1,0 +1,562 @@
+<head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/styles/bootstrap4/bootstrap.min.css"
+  />
+  <link
+    href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/plugins/OwlCarousel2-2.2.1/animate.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css"
+  />
+  <link rel="stylesheet" type="text/css" href="/styles/main_styles.css" />
+  <link rel="stylesheet" type="text/css" href="/styles/responsive.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+  crossorigin="anonymous"
+></script>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.js"
+></script>
+
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/javascripts/user-script.js"></script>
+<style>
+   @media (max-width:544px){
+      .main_slider{
+        margin-top: 20px;
+        padding: 0;
+      }
+      .text-h1{
+        font-size: 5px;
+      }
+      .text-h1{
+        font-size: 20px;
+      }
+    }
+   @media (min-width:545px)(max-width:1090px){
+      .main_slider{
+        margin-top: 100px;
+        padding: 0;
+      }
+    }
+    @media (min-width:607px){
+      .main_slider_content{
+        margin-left:80px;
+        padding: 0;
+      }
+    }
+     @media (max-width:606px){
+      .main_slider_content{
+        margin-left:30px;
+        padding: 0;
+      }
+    }
+</style>
+</head>
+
+{{! <div class="super_container"> }}
+
+<!-- Slider -->
+<div
+  class="main_slider"
+  style="background-size: 80%; background-image:url(images/banner/{{bannerData.image}})"
+>
+  <div class="container fill_height p-5">
+    <div class="row align-items-center fill_height">
+      <div class="col-9">
+        <div class="main_slider_content">
+          <h5 class="text-h5 text-white">{{bannerData.title}}</h5>
+          <h1 class="text-h1 text-white">{{bannerData.description}}</h1>
+          <div class="red_button shop_now_button"><a href=
+          "/{{bannerData.productCategory}}"
+          {{!-- "/clubjerseys" --}}
+          >shop
+              now</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="benefit">
+  <div class="container">
+    <div class="row benefit_row d-flex" style="justify-content: space-evenly;">
+      <div class="col-lg-3 benefit_col" style="background-color:#c19affb8 ;" >
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon"><i
+              class="fa fa-truck"
+              aria-hidden="true"
+            ></i></div>
+          <div class="benefit_content">
+            <h6>free shipping</h6>
+            <p>Delivering orders for free.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 benefit_col"style="background-color:#FF6081 ; opacity: 100%;">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon"><i
+              class="fa fa-money"
+              aria-hidden="true"
+            ></i></div>
+          <div class="benefit_content">
+            <h6>cash on delivery</h6>
+            <p>Pay us when you receive it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 benefit_col" style="background-color:#ffbf49e6 ;">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon"><i class="fa fa-check" aria-hidden="true"></i></div>
+          <div class="benefit_content">
+            <h6>100% Best quality</h6>
+            <p>Ultra fine quality in India.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Banner -->
+
+<div class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div
+          class="banner_item align-items-center"
+          style="background-size: contain; background-image:url(images/banner_1.jpg)"
+        >
+          <div class="banner_category">
+            <a href="/boots">Boots</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="banner_item align-items-center"
+          style="background-size: contain; background-image:url(images/banner_2.jpg)"
+        >
+          <div class="banner_category">
+            <a href="/clubjerseys">Club Jerseys</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="banner_item align-items-center"
+          style="background-size: contain; background-image:url(images/banner_3.jpg)"
+        >
+          <div class="banner_category">
+            <a href="/internationaljerseys ">National Jerseys</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Arrivals -->
+<div>
+
+
+<div class="new_arrivals">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <div class="section_title new_arrivals_title">
+          <h2>Fans' Favorites</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col text-center">
+        <div class="new_arrivals_sorting">
+          <ul
+            class="arrivals_grid_sorting clearfix button-group filters-button-group">
+            <li style="text-transform: capitalize;"
+              class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
+              data-filter="*"
+            >all</li>
+            <li style="text-transform: capitalize;"
+              class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+              data-filter=".630757fa488981b22405e5a7"
+            >Club jerseys</li>
+            <li style="text-transform: capitalize;"
+              class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+              data-filter=".63075800488981b22405e5aa"
+            >National jerseys</li>
+            <li style="text-transform: capitalize;"
+              class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+              data-filter=".6308915a7899c3d02fc06005"
+            >Boots</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col">
+        <div
+          class="product-grid"
+          data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'
+        >
+          {{#each products}}
+            {{! <div class="owl-item product_slider_item"> }}
+            <div
+              class="mb-3 product-item {{this.category}}"
+              style="height: 390px;"
+            >
+            <div>
+              <form method="get" action="/singleProduct/{{this._id}}">
+                <div class="mb-5 {{this.category}}" style="">
+                  <div
+                    class="product discount product_filter"
+                    style="height: 255px;"
+                  >
+                    <div class="product_image">
+                      <button
+                        type="submit"
+                        class="bg-white d-flex justify-content-center"
+                        style="border: none;"
+                      ><img
+                          style="width: 90%;"
+                          src="/images/products/{{this.images.[0]}}"
+                          alt=""
+                        /></button>
+                    </div>
+                    
+                    {{! <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> }}
+                    <div class="product_info">
+                      <h6 class="product_name"><button
+                          type="submit"
+                          class="bg-white col-12 text-dark"
+                          style="border: none;"
+                        >{{this.name}}</button></h6>
+                    </div>
+                    <div
+                      class="product_price text-center"
+                    >₹{{this.sellingPrice}}<span
+                      >₹{{this.actualPrice}}</span>
+                      <a onclick="addToWishlist('{{this._id}}')" class="ml-2 mt-2"><i id="wishlist-icon" class="fa fa-heart-o" aria-hidden="true"></i></a>
+                      </div>
+                  </div>
+                </div>
+                {{! <div class="red_button add_to_cart_button"><a href="/addToCart">add to cart</a></div>
+						 }}
+
+              </form>
+              {{!-- <div class="red_button add_to_cart_button mt-5"
+			  style="width:100%; height:37px; border-radius:20 ;">
+                
+                <button
+                  class="m-1"
+                  style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
+                  class=""
+                  onclick="addToCart('{{this._id}}')"
+                >add to cart</button>
+              </div> --}}
+              {{#if (eq quantity 0)}}
+                  <div
+                    class="red_button add_to_cart_button mt-5"
+                    style="width:100%; height:37px; border-radius:20 ;"
+                  >
+                  
+                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                    <button
+                      class="m-1" disabled
+                      style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
+                      class=""
+                      onclick=""
+                    >Out of Stock</button>
+                  </div>
+                  {{else}}
+                  <div
+                    class="red_button add_to_cart_button mt-5"
+                    style="width:100%; height:37px; border-radius:20 ;"
+                  >
+                  
+                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                    <button
+                      class="m-1"
+                      style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
+                      class=""
+                      onclick="addToCart('{{this._id}}')"
+                    >add to cart</button>
+                  </div>{{/if}}
+              </div>
+            </div>
+            {{! </div> }}
+          {{/each}}
+        </div></div></div>
+    {{! <div class="row">
+				<div class="col">
+					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'> }}
+    {{! <div class="ml-5 product-grid"> }}
+
+    <!-- Product 1 -->
+    {{!-- {{#each products}}
+	
+									<div style="height:395px ;" class="product-item men mb-5 d-flex flex-column justify-content-center align-items-center">
+										<div class="d-flex justify-content-center align-items-center flex-column m-1" >
+										<div class="product discount product_filter d-flex justify-content-center align-items-center flex-column">
+											<form method="post" action="/singleProduct/{{this._id}}">
+											<div class="product_image ">
+												<button type="submit" class="bg-white" style="border: none;"><img style="width: 95%;" src='/images/products/{{this.images.[0]}}' alt=""></button>
+											</div>
+											<div class="favorite favorite_left"></div> --}}
+    {{! <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> }}
+    {{!-- <div class="product_info">
+												<h6 class="product_name">
+													<button type="submit" class="bg-white" style="border: none; color:black">{{this.name}}</button>
+												</h6>
+												<div class="product_price">₹{{this.sellingPrice}}<span>₹{{this.actualPrice}}</span></div>
+											</div>
+											</form> --}}
+    {{! <div class="product_image"> }}
+    {{!-- <img src='/images/products/{{this.images.[0]}}' alt=""> --}}
+    {{! </div> }}
+
+    {{! </div> }}
+
+    {{! <div class="red_button add_to_cart_button mt-4">
+									 <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+    {{!-- <button class="m-1" style="border: none; width:205px ;height:40px; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{Product._id}}')">add to cart</button>
+									</div> --}}
+    {{! <div class="red_button add_to_cart_button mt-3" style="width:220px; height:35px; border-radius:20 ;"> }}
+    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+    {{!-- <button class="m-1" style="border: none; width:215px ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{this._id}}')">add to cart</button>
+									</div>
+									</div>
+									  
+									</div>
+                                    {{/each}}
+							</div>
+							</div></div></div> --}}
+    {{!-- <div class="row">
+				<div class="col">
+					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+
+						<!-- Products -->
+						{{#each products}}
+						
+						<form method="post" action="/singleProduct/{{this._id}}">
+						<div class="product-item mb-5 {{this.category}}" style="">
+							<div class="product discount product_filter" style="height: 380px;">
+								<div class="product_image">
+									<button type="submit" class="bg-white p-3" style="border: none;"><img src="/images/products/{{this.images.[0]}}" alt=""></button>
+								</div>
+								<div class="favorite favorite_left"></div>
+								<div class="product_info">
+									<h6 class="product_name"><button type="submit" class="bg-white text-dark" style="border: none;">{{this.name}}</button></h6>
+									<div class="product_price">₹{{this.sellingPrice}}<span>₹{{this.actualPrice}}</span></div>
+								</div>
+								
+							</div>
+							<div class="red_button add_to_cart_button" style="width:220px; height:37px; border-radius:20 ;">
+									
+									 <button class="m-1" style="border: none; width:205px ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{this._id}}')">add to cart</button>
+									</div>
+						</div>
+						
+						</form>
+						
+						{{/each}}
+					</div>
+				</div>
+			</div> --}}
+  </div>
+</div>
+<!-- Deal of the week -->
+
+{{! <div class="deal_ofthe_week">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="deal_ofthe_week_img">
+						<img src="images/deal_ofthe_week.png" alt="">
+					</div>
+				</div>
+				<div class="col-lg-6 text-right deal_ofthe_week_col">
+					<div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
+						<div class="section_title">
+							<h2>Deal Of The Week</h2>
+						</div>
+						<ul class="timer">
+							<li class="d-inline-flex flex-column justify-content-center align-items-center">
+								<div id="day" class="timer_num">03</div>
+								<div class="timer_unit">Day</div>
+							</li>
+							<li class="d-inline-flex flex-column justify-content-center align-items-center">
+								<div id="hour" class="timer_num">15</div>
+								<div class="timer_unit">Hours</div>
+							</li>
+							<li class="d-inline-flex flex-column justify-content-center align-items-center">
+								<div id="minute" class="timer_num">45</div>
+								<div class="timer_unit">Mins</div>
+							</li>
+							<li class="d-inline-flex flex-column justify-content-center align-items-center">
+								<div id="second" class="timer_num">23</div>
+								<div class="timer_unit">Sec</div>
+							</li>
+						</ul>
+						<div class="red_button deal_ofthe_week_button"><a href="#">shop now</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> }}
+
+<!-- Best Sellers -->
+<div class="best_sellers mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <div class="section_title new_arrivals_title">
+          <h2>Best Sellers</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="product_slider_container">
+          <div class="owl-carousel owl-theme product_slider">
+
+            <!-- Slide 1 -->
+            {{#each products}}
+              <div class="owl-item product_slider_item">
+
+                <div class="product-item" style="height: 380px;">
+                  <form method="get" action="/singleProduct/{{this._id}}">
+                    <div class="mb-5 {{this.category}}" style="">
+                      <div
+                        class="product discount product_filter"
+                        style="height: 255px;"
+                      >
+                        <div class="product_image">
+                          <button
+                            type="submit"
+                            class="bg-white d-flex justify-content-center"
+                            style="border: none;"
+                          >
+                          <img
+                              style="width: 65%;"
+                              src="/images/products/{{this.images.[2]}}"
+                              alt=""
+                            /></button>
+                        </div>
+                        
+                        {{!-- <div onclick="addToWishlist('{{this._id}}','{{../ID}}')" class="favorite favorite_left"></div> --}}
+                        {{! <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> }}
+                        <div class="product_info">
+                          
+                          <h6 class="product_name"><button
+                              type="submit"
+                              class="bg-white col-12 text-dark"
+                              style="border: none;"
+                            >{{this.name}}</button></h6>
+
+                        </div>
+                        <div
+                          class="product_price text-center"
+                        >₹{{this.sellingPrice}}<span
+                          >₹{{this.actualPrice}}</span>
+                          <a onclick="addToWishlist('{{this._id}}')" class="ml-2 mt-2"><i id="wishlist-icon" class="fa fa-heart-o" aria-hidden="true"></i></a></div>
+
+                      </div>
+
+                    </div>
+                    {{! <div class="red_button add_to_cart_button"><a href="/addToCart">add to cart</a></div>
+						 }}
+
+                  </form href="/singleProduct/{{this._id}}">
+                  {{#if (eq quantity 0)}}
+                  <div
+                    class="red_button add_to_cart_button"
+                    style="width:100%; height:37px; border-radius:20 ;"
+                  >
+                  
+                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                    <button
+                      class="m-1" disabled
+                      style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
+                      class=""
+                      onclick=""
+                    >Out of Stock</button>
+                  </div>
+                  {{else}}
+                  <div
+                    class="red_button add_to_cart_button"
+                    style="width:100%; height:37px; border-radius:20 ;"
+                  >
+                  
+                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                    <button
+                      class="m-1"
+                      style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
+                      class=""
+                      onclick="addToCart('{{this._id}}')"
+                    >add to cart</button>
+                  </div>{{/if}}
+                </div>
+              </div>
+            {{/each}}
+          </div>
+          <!-- Slider Navigation -->
+          <div
+            class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column"
+          >
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          </div>
+          <div
+            class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column"
+          >
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

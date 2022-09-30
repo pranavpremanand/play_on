@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/adminStyles/admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/adminStyles/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/adminStyles/admin/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/adminStyles/admin/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    {{!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> --}}
+
+    <!-- Compiled and minified JavaScript -->
+    {{!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
+
+</head>
+
+<body style="min-width: 100vh;">
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <div class="navbar-brand mx-5 my-2">
+                    <h5 class="">PLAY <span style="color:#ff0000 ;">ON!</span></h5>
+                </div>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="/images/admin.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Pranav</h6>
+                        <span style="font-size: 14px;">Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="/admin" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/admin/users" class="nav-link nav-item"><i class="fas fa-users-cog"></i>Users</a>
+                    <a href="/admin/edit-banner" class="nav-link nav-item"><i class="fas fa-image"></i>Upload
+                        Banner</a>
+                    <a href="/admin/order-management" class="nav-link nav-item"><i class="fa fa-shopping-basket"
+                            aria-hidden="true"></i>Orders</a>
+                    <a href="/admin/addproduct" class="nav-link"><i class="fas fa-cart-plus"></i>
+                        Add Products</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa fa-laptop me-2"></i>View Products</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            {{#each categoryList}}
+                            <a href="/admin/viewproducts/{{this._id}}" class="dropdown-item">{{this.name}}</a>
+                            {{/each}}
+                            <a href="/admin/viewallproducts" class="dropdown-item">All Products</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table"
+                                aria-hidden="true"></i>
+                            Category</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/admin/categorylist" class="dropdown-item">Show Category List</a>
+                            <a href="/admin/addcategory" class="dropdown-item">Add Category</a>
+                            
+                        </div>
+                    </div>
+                    <a href="/admin/coupons" class="nav-link nav-item"><i class="fa fa-tags" aria-hidden="true"></i>
+                        Coupons</a>
+                        <a href="/admin/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i>
+                        Logout</a>
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="#" class="navbar-brand d-flex d-lg-none me-4"></a>
+                    <a href="#" class="sidebar-toggler flex-shrink-0">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="navbar-nav align-items-center ms-auto">
+                        {{!-- <div class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <img class="rounded-circle me-lg-2" src="/images/admin.jpg" alt=""
+                                    style="width: 35px; height: 35px;">
+                                <span class="d-none d-lg-inline-flex">Pranav</span>
+
+                            </a>
+                        </div> --}}
+                    </div>
+            </nav>
+            <!-- Navbar End -->
+
+<div class="p-5">
+                    <div class="row">
+						<div class="col-12 col-lg-5 m-1">
+							<div class="card radius-15 bg-voilet">
+								<div class="card-body" style="background-color:#5bec69 ; opacity: 100%;">
+									<div class="d-flex align-items-center">
+										<div>
+											<h2 class="mb-0 text-white" id="orders"><i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+										</div>
+										<div class="ms-auto font-35 text-white"><i class="bx bx-cart-alt"></i>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div>
+											<p class="mb-0 text-white">Orders Delivered</p>
+										</div>
+										{{!-- <div class="ms-auto font-14 text-white">+23.4%</div> --}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-5 m-1">
+							<div class="card radius-15 bg-primary-blue">
+								<div class="card-body" style="background-color:#448cc6 ; opacity: 100%;">
+									<div class="d-flex align-items-center">
+										<div class="d-flex">
+											<h2 class="mb-0 text-white">₹&nbsp;</h2>
+                                            <h2 class="mb-0 text-white" id="profit"><i class='bx bxs-down-arrow-alt font-14 text-white'></i> </h2>
+										</div>
+										<div class="ms-auto font-35 text-white"><i class="bx bx-support"></i>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div>
+											<p class="mb-0 text-white">Profit</p>
+										</div>
+										{{!-- <div class="ms-auto font-14 text-white">+14.7%</div> --}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-5 m-1">
+							<div class="card radius-15 bg-rose">
+								<div class="card-body" style="background-color: #de312ee9; opacity: 100%;">
+									<div class="d-flex align-items-center">
+										<div>
+											<h2 class="mb-0 text-white" id="users"><i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+										</div>
+										<div class="ms-auto font-35 text-white"><i class="bx bx-tachometer"></i>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div>
+											<p class="mb-0 text-white">Users</p>
+										</div>
+										{{!-- <div class="ms-auto font-14 text-white">-12.9%</div> --}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-5 m-1">
+							<div class="card radius-15 bg-sunset">
+								<div class="card-body" style="background-color: #18765f;">
+									<div class="d-flex align-items-center">
+										<div>
+											<h2 class="mb-0 text-white" id="products"><i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+										</div>
+										<div class="ms-auto font-35 text-white"><i class="bx bx-user"></i>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div>
+											<p class="mb-0 text-white">Products</p>
+										</div>
+										{{!-- <div class="ms-auto font-14 text-white">+13.6%</div> --}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--end row-->
+
+<div>
+    <h3 class="text-center text-white m-4"><u>Total Sales</u></h3>
+</div>
+
+
+                <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+                {{!-- , {
+                data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+                borderColor: "green",
+                fill: false
+                }
+                , {
+                data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+                borderColor: "blue",
+                fill: false
+                } --}}
+
+                <script>
+                    window.addEventListener('load', (event))
+                    $.ajax({
+                        url: '/admin/sales-report',
+                        method: 'get',
+                        success: ((response) => {
+                            document.getElementById('orders').innerHTML = response.noOfOrders;
+                            document.getElementById('users').innerHTML = response.noOfUsers;
+                            document.getElementById('profit').innerHTML = response.totalProfit;
+                            document.getElementById('products').innerHTML = response.noOfProducts;
+                            var xValues = [
+                            response.dateList[9],
+                            response.dateList[8],
+                            response.dateList[7],
+                            response.dateList[6],
+                            response.dateList[5],
+                            response.dateList[4],
+                            response.dateList[3],
+                            response.dateList[2],
+                            response.dateList[1],
+                            response.dateList[0]]
+                            new Chart("myChart", {
+                                type: "line",
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+                                        data: [response.dateSales[9],
+                                        response.dateSales[8],
+                                        response.dateSales[7],
+                                        response.dateSales[6],
+                                        response.dateSales[5],
+                                        response.dateSales[4],
+                                        response.dateSales[3],
+                                        response.dateSales[2],
+                                        response.dateSales[1],
+                                        response.dateSales[0],
+                                        ],
+                                        backgroundColor: "black",
+                                        borderColor: "red",
+                                        fill: false,
+                                    }
+                                    ]
+                                },
+                                options: {
+                                    legend: { display: false }
+                                }
+                            });
+                        })
+                    })
+                </script>
+                </div>
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        {{!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        --}}
+    </div>
+
+    <!-- JavaScript Libraries -->
+
+    {{!--
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/adminStyles/admin/lib/chart/chart.min.js"></script>
+    <script src="/adminStyles/admin/lib/easing/easing.min.js"></script>
+    <script src="/adminStyles/admin/lib/waypoints/waypoints.min.js"></script>
+    <script src="/adminStyles/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/adminStyles/admin/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/adminStyles/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/adminStyles/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/adminStyles/admin/js/main.js"></script>
+</body>
+
+</html>
