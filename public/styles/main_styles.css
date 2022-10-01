@@ -830,13 +830,12 @@ section
 	width: 100%;
 	height: 700px;
 	background-repeat: no-repeat;
-	background-size: cover;
+	/* background-size: cover; */
 	background-position: center center;
-	margin-top: 150px;
 }
 .main_slider_content
 {
-	width: 60%;
+	width: 70%;
 }
 .main_slider_content h6
 {
@@ -1037,7 +1036,7 @@ section
 }
 .product-item:hover::after
 {
-	box-shadow: 0 25px 29px rgba(63, 78, 100, 0.15);
+	box-shadow: 0 10px 10px rgba(231, 148, 148, 0.728);
 	border: solid 2px rgba(235,235,235,1);
 }
 .product

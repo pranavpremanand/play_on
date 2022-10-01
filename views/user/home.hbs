@@ -57,27 +57,76 @@
 <script src="/js/custom.js"></script>
 <script src="/javascripts/user-script.js"></script>
 <style>
-   @media (max-width:544px){
+  @media(max-width:574px){
+    .image{
+      width: 50px;
+    }
+  }
+  @media(min-width:575px){
+    .image{
+      width: 90%;
+    }
+  }
+  @media (max-width:374px){
       .main_slider{
-        margin-top: 20px;
+        margin: 0px;
         padding: 0;
       }
-      .text-h1{
-        font-size: 5px;
+      .text-h5{
+        font-size: x-small;
       }
       .text-h1{
-        font-size: 20px;
+        font-size: large;
+      }
+      .red_button{
+        margin: 0;
+        height: 30px;
+        width: 100px;
       }
     }
-   @media (min-width:545px)(max-width:1090px){
+   @media (max-width:764px){
       .main_slider{
-        margin-top: 100px;
+        margin-top: 30px;
+        padding: 0;
+      }
+      .text-h5{
+        font-size: x-small;
+      }
+      .text-h1{
+        font-size: xx-large;
+      }
+      .red_button{
+        margin: 0;
+        height: 30px;
+        width: 100px;
+      }
+    }
+    @media (max-width:410px){
+      .text-h1{
+        font-size: small;
+      }
+    }
+   @media (min-width:545px)(max-width:770px){
+      .main_slider{
+        margin-top: 50px;
+        padding: 0;
+      }
+    }
+    @media (min-width:771px){
+      .main_slider{
+        margin-top: 150px;
         padding: 0;
       }
     }
     @media (min-width:607px){
       .main_slider_content{
-        margin-left:80px;
+        margin-left:10px;
+        padding: 0;
+      }
+    }
+    @media (max-width:768px){
+      .main_slider_content{
+        margin-left:10px;
         padding: 0;
       }
     }
@@ -85,6 +134,26 @@
       .main_slider_content{
         margin-left:30px;
         padding: 0;
+      }
+    }
+    @media(max-width:735px){
+      .main_slider{
+        background-size: 700px;
+      }
+    }
+    @media(min-width:736px){
+      .main_slider{
+        background-size: 90%;
+      }
+    }
+    @media(max-width:481px){
+      .product-item{
+        height: auto;
+      }
+    }
+    @media(min-width:481px){
+      .product-item{
+        height: 360px;
       }
     }
 </style>
@@ -95,15 +164,14 @@
 <!-- Slider -->
 <div
   class="main_slider"
-  style="background-size: 80%; background-image:url(images/banner/{{bannerData.image}})"
->
+  style="background-image:url(images/banner/{{bannerData.image}})">
   <div class="container fill_height p-5">
     <div class="row align-items-center fill_height">
-      <div class="col-9">
+      <div class="">
         <div class="main_slider_content">
-          <h5 class="text-h5 text-white">{{bannerData.title}}</h5>
-          <h1 class="text-h1 text-white">{{bannerData.description}}</h1>
-          <div class="red_button shop_now_button"><a href=
+          <h5 class="col-12 text-h5 text-white">{{bannerData.title}}</h5>
+          <h1 class="col-10 col-sm-9 text-h1 text-white">{{bannerData.description}}</h1>
+          <div class="red_button shop_now_button ml-2"><a href=
           "/{{bannerData.productCategory}}"
           {{!-- "/clubjerseys" --}}
           >shop
@@ -115,45 +183,7 @@
 </div>
 
 
-<div class="benefit">
-  <div class="container">
-    <div class="row benefit_row d-flex" style="justify-content: space-evenly;">
-      <div class="col-lg-3 benefit_col" style="background-color:#c19affb8 ;" >
-        <div class="benefit_item d-flex flex-row align-items-center">
-          <div class="benefit_icon"><i
-              class="fa fa-truck"
-              aria-hidden="true"
-            ></i></div>
-          <div class="benefit_content">
-            <h6>free shipping</h6>
-            <p>Delivering orders for free.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 benefit_col"style="background-color:#FF6081 ; opacity: 100%;">
-        <div class="benefit_item d-flex flex-row align-items-center">
-          <div class="benefit_icon"><i
-              class="fa fa-money"
-              aria-hidden="true"
-            ></i></div>
-          <div class="benefit_content">
-            <h6>cash on delivery</h6>
-            <p>Pay us when you receive it.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 benefit_col" style="background-color:#ffbf49e6 ;">
-        <div class="benefit_item d-flex flex-row align-items-center">
-          <div class="benefit_icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-          <div class="benefit_content">
-            <h6>100% Best quality</h6>
-            <p>Ultra fine quality in India.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- Banner -->
 
 <div class="banner">
@@ -192,6 +222,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- New Arrivals -->
 <div>
@@ -242,30 +273,28 @@
           {{#each products}}
             {{! <div class="owl-item product_slider_item"> }}
             <div
-              class="mb-3 product-item {{this.category}}"
-              style="height: 390px;"
+              class="mb-5 product-item {{this.category}}"
+              {{!-- style="height: auto;" --}}
             >
             <div>
               <form method="get" action="/singleProduct/{{this._id}}">
-                <div class="mb-5 {{this.category}}" style="">
+                <div class="mb-3 {{this.category}}" style="">
                   <div
                     class="product discount product_filter"
-                    style="height: 255px;"
+                    style="height:auto;"
                   >
                     <div class="product_image">
                       <button
                         type="submit"
                         class="bg-white d-flex justify-content-center"
                         style="border: none;"
-                      ><img
+                      ><img class="image"
                           style="width: 90%;"
                           src="/images/products/{{this.images.[0]}}"
                           alt=""
-                        /></button>
-                    </div>
-                    
-                    {{! <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> }}
-                    <div class="product_info">
+                        />
+                        </button>
+                        <div class="product_info">
                       <h6 class="product_name"><button
                           type="submit"
                           class="bg-white col-12 text-dark"
@@ -276,31 +305,23 @@
                       class="product_price text-center"
                     >₹{{this.sellingPrice}}<span
                       >₹{{this.actualPrice}}</span>
-                      <a onclick="addToWishlist('{{this._id}}')" class="ml-2 mt-2"><i id="wishlist-icon" class="fa fa-heart-o" aria-hidden="true"></i></a>
+                      <a onclick="addToWishlist('{{this._id}}')" class="ml-2 mt-2">
+                        <i id="wishlist-icon favorite" class="fa fa-heart-o" aria-hidden="true"></i></a>
                       </div>
+                    </div>
+                    
+                    {{! <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> }}
+                    
                   </div>
+                  
+                     
                 </div>
-                {{! <div class="red_button add_to_cart_button"><a href="/addToCart">add to cart</a></div>
-						 }}
-
-              </form>
-              {{!-- <div class="red_button add_to_cart_button mt-5"
-			  style="width:100%; height:37px; border-radius:20 ;">
-                
-                <button
-                  class="m-1"
-                  style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
-                  class=""
-                  onclick="addToCart('{{this._id}}')"
-                >add to cart</button>
-              </div> --}}
-              {{#if (eq quantity 0)}}
+                {{!-- <div class="d-flex justify-content-center p-2" style="width: fit-content;">
+                 {{#if (eq quantity 0)}}
                   <div
-                    class="red_button add_to_cart_button mt-5"
+                    class="red_button add_to_cart_button d-flex justify-content-center"
                     style="width:100%; height:37px; border-radius:20 ;"
                   >
-                  
-                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
                     <button
                       class="m-1" disabled
                       style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
@@ -310,11 +331,7 @@
                   </div>
                   {{else}}
                   <div
-                    class="red_button add_to_cart_button mt-5"
-                    style="width:100%; height:37px; border-radius:20 ;"
-                  >
-                  
-                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                    class="red_button add_to_cart_button d-flex justify-content-center">
                     <button
                       class="m-1"
                       style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
@@ -322,128 +339,21 @@
                       onclick="addToCart('{{this._id}}')"
                     >add to cart</button>
                   </div>{{/if}}
+                  </div> --}}
+                {{! <div class="red_button add_to_cart_button"><a href="/addToCart">add to cart</a></div>
+						 }}
+
+              </form>
+              
               </div>
+              
             </div>
+            
             {{! </div> }}
           {{/each}}
         </div></div></div>
-    {{! <div class="row">
-				<div class="col">
-					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'> }}
-    {{! <div class="ml-5 product-grid"> }}
-
-    <!-- Product 1 -->
-    {{!-- {{#each products}}
-	
-									<div style="height:395px ;" class="product-item men mb-5 d-flex flex-column justify-content-center align-items-center">
-										<div class="d-flex justify-content-center align-items-center flex-column m-1" >
-										<div class="product discount product_filter d-flex justify-content-center align-items-center flex-column">
-											<form method="post" action="/singleProduct/{{this._id}}">
-											<div class="product_image ">
-												<button type="submit" class="bg-white" style="border: none;"><img style="width: 95%;" src='/images/products/{{this.images.[0]}}' alt=""></button>
-											</div>
-											<div class="favorite favorite_left"></div> --}}
-    {{! <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div> }}
-    {{!-- <div class="product_info">
-												<h6 class="product_name">
-													<button type="submit" class="bg-white" style="border: none; color:black">{{this.name}}</button>
-												</h6>
-												<div class="product_price">₹{{this.sellingPrice}}<span>₹{{this.actualPrice}}</span></div>
-											</div>
-											</form> --}}
-    {{! <div class="product_image"> }}
-    {{!-- <img src='/images/products/{{this.images.[0]}}' alt=""> --}}
-    {{! </div> }}
-
-    {{! </div> }}
-
-    {{! <div class="red_button add_to_cart_button mt-4">
-									 <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
-    {{!-- <button class="m-1" style="border: none; width:205px ;height:40px; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{Product._id}}')">add to cart</button>
-									</div> --}}
-    {{! <div class="red_button add_to_cart_button mt-3" style="width:220px; height:35px; border-radius:20 ;"> }}
-    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
-    {{!-- <button class="m-1" style="border: none; width:215px ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{this._id}}')">add to cart</button>
-									</div>
-									</div>
-									  
-									</div>
-                                    {{/each}}
-							</div>
-							</div></div></div> --}}
-    {{!-- <div class="row">
-				<div class="col">
-					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-
-						<!-- Products -->
-						{{#each products}}
-						
-						<form method="post" action="/singleProduct/{{this._id}}">
-						<div class="product-item mb-5 {{this.category}}" style="">
-							<div class="product discount product_filter" style="height: 380px;">
-								<div class="product_image">
-									<button type="submit" class="bg-white p-3" style="border: none;"><img src="/images/products/{{this.images.[0]}}" alt=""></button>
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_info">
-									<h6 class="product_name"><button type="submit" class="bg-white text-dark" style="border: none;">{{this.name}}</button></h6>
-									<div class="product_price">₹{{this.sellingPrice}}<span>₹{{this.actualPrice}}</span></div>
-								</div>
-								
-							</div>
-							<div class="red_button add_to_cart_button" style="width:220px; height:37px; border-radius:20 ;">
-									
-									 <button class="m-1" style="border: none; width:205px ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{this._id}}')">add to cart</button>
-									</div>
-						</div>
-						
-						</form>
-						
-						{{/each}}
-					</div>
-				</div>
-			</div> --}}
   </div>
 </div>
-<!-- Deal of the week -->
-
-{{! <div class="deal_ofthe_week">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6">
-					<div class="deal_ofthe_week_img">
-						<img src="images/deal_ofthe_week.png" alt="">
-					</div>
-				</div>
-				<div class="col-lg-6 text-right deal_ofthe_week_col">
-					<div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
-						<div class="section_title">
-							<h2>Deal Of The Week</h2>
-						</div>
-						<ul class="timer">
-							<li class="d-inline-flex flex-column justify-content-center align-items-center">
-								<div id="day" class="timer_num">03</div>
-								<div class="timer_unit">Day</div>
-							</li>
-							<li class="d-inline-flex flex-column justify-content-center align-items-center">
-								<div id="hour" class="timer_num">15</div>
-								<div class="timer_unit">Hours</div>
-							</li>
-							<li class="d-inline-flex flex-column justify-content-center align-items-center">
-								<div id="minute" class="timer_num">45</div>
-								<div class="timer_unit">Mins</div>
-							</li>
-							<li class="d-inline-flex flex-column justify-content-center align-items-center">
-								<div id="second" class="timer_num">23</div>
-								<div class="timer_unit">Sec</div>
-							</li>
-						</ul>
-						<div class="red_button deal_ofthe_week_button"><a href="#">shop now</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> }}
 
 <!-- Best Sellers -->
 <div class="best_sellers mb-5">
@@ -464,12 +374,14 @@
             {{#each products}}
               <div class="owl-item product_slider_item">
 
-                <div class="product-item" style="height: 380px;">
+                <div class="product-item" 
+                {{!-- style="height: auto;"--}}
+                > 
                   <form method="get" action="/singleProduct/{{this._id}}">
                     <div class="mb-5 {{this.category}}" style="">
                       <div
                         class="product discount product_filter"
-                        style="height: 255px;"
+                        style="height: auto;"
                       >
                         <div class="product_image">
                           <button
@@ -508,13 +420,13 @@
 						 }}
 
                   </form href="/singleProduct/{{this._id}}">
-                  {{#if (eq quantity 0)}}
+                  {{!-- {{#if (eq quantity 0)}}
                   <div
                     class="red_button add_to_cart_button"
                     style="width:100%; height:37px; border-radius:20 ;"
                   >
                   
-                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                   
                     <button
                       class="m-1" disabled
                       style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
@@ -528,14 +440,14 @@
                     style="width:100%; height:37px; border-radius:20 ;"
                   >
                   
-                    {{! <div class="red_button add_to_cart_button" ><a href="/addToCart">add to cart</a></div> }}
+                    
                     <button
                       class="m-1"
                       style="border: none; width:100% ;height:40px; border-radius:20 ; color:white; text-transform: uppercase;"
                       class=""
                       onclick="addToCart('{{this._id}}')"
                     >add to cart</button>
-                  </div>{{/if}}
+                  </div>{{/if}} --}}
                 </div>
               </div>
             {{/each}}
@@ -557,6 +469,44 @@
   </div>
 </div>
 </div>
-
+<div class="benefit mt-3">
+  <div class="container">
+    <div class="row benefit_row d-flex" style="justify-content: space-evenly;">
+      <div class="col-lg-3 benefit_col" style="background-color:#c19affb8 ;" >
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon"><i
+              class="fa fa-truck"
+              aria-hidden="true"
+            ></i></div>
+          <div class="benefit_content">
+            <h6>free shipping</h6>
+            <p>Delivering orders for free.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 benefit_col"style="background-color:#FF6081 ; opacity: 100%;">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon"><i
+              class="fa fa-money"
+              aria-hidden="true"
+            ></i></div>
+          <div class="benefit_content">
+            <h6>cash on delivery</h6>
+            <p>Pay us when you receive it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 benefit_col" style="background-color:#ffbf49e6 ;">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon"><i class="fa fa-check" aria-hidden="true"></i></div>
+          <div class="benefit_content">
+            <h6>100% Best quality</h6>
+            <p>Ultra fine quality in India.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 

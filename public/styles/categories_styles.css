@@ -1147,10 +1147,7 @@ section
 {
 	margin-top: 150px;
 }
-.product_section
-{
 
-}
 .sidebar
 {
 	float: left;
@@ -1329,7 +1326,7 @@ section
 }
 .product-item:hover::after
 {
-	box-shadow: 0 25px 29px rgba(63, 78, 100, 0.15);
+	box-shadow: 0 25px 29px rgba(83, 107, 144, 0.91);
 	border: solid 2px rgba(235,235,235,1);
 }
 .product

@@ -57,7 +57,17 @@
 /************
 4. 1199px
 ************/
-
+@media only screen and (max-width: 1199px)
+{
+	.product-item
+	{
+		height: 360px;
+	}
+	.product
+	{
+		height: 320px;
+	}
+}
 @media only screen and (max-width: 1199px)
 {
 	.product-item
