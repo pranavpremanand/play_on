@@ -9,10 +9,10 @@ const productModel = require("../models/product-model");
 
 require("../config/server");
 
-const accountSid = process.env.ACCOUNTSID
-const authToken = process.env.AUTHTOKEN
+// const accountSid = process.env.ACCOUNTSID
+// const authToken = process.env.AUTHTOKEN
 const serviceID = process.env.SERVICEID
-const client = require("twilio")(accountSid, authToken);
+const client = require("twilio")(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 const Razorpay = require("razorpay");
 
 var instance = new Razorpay({
