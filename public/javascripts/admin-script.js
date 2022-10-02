@@ -1,5 +1,5 @@
 //ADD COUPON
-function addCoupon(event){
+function addCoupon(){
     name = document.getElementById('name').value
     discount = document.getElementById('discount').value
     code = document.getElementById('code').value

@@ -387,6 +387,7 @@ router.get("/add-coupon", (req, res) => {
 //ADD COUPON
 router.post("/added-coupon", (req, res, next) => {
   if (req.session.admin) {
+    console.log(req.body)
     adminHelper
       .addCoupon(req.body)
       .then((status) => {

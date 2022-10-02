@@ -157,6 +157,7 @@ module.exports = {
   addCoupon: (data) => {
     return new Promise(async (resolve, reject) => {
       try {
+        console.log(data)
         const couponExist = await coupons.findOne({ name: data.name });
         if (couponExist) {
           const response = false;

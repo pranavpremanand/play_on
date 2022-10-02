@@ -380,7 +380,7 @@ function razorpayPayment(order) {
   console.log('razorpay paymentaaaaaaa')
   console.log(order)
   let options = {
-    key: "rzp_test_scEepl97MNpDhh", // Enter the Key ID generated from the Dashboard
+    key: process.env.RAZ_KEYID, // Enter the Key ID generated from the Dashboard
     amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     currency: "INR",
     name: "Play On",
@@ -409,8 +409,8 @@ function razorpayPayment(order) {
   rzp1.open();
 
   function verifyPayment(payment, order) {
-    console.log('verifyyyyyyyyyy',payment)
-    console.log('verifyyyyyyyyyy',order)
+    // console.log('verifyyyyyyyyyy',payment)
+    // console.log('verifyyyyyyyyyy',order)
     $.ajax({
       url: "/verify-payment",
       method: "post",
@@ -447,7 +447,7 @@ function razorpayPayment(order) {
       method: 'get',
       success:(response)=>{
         // location.href = '/paymentfailed'
-        console.log('payment       failed');
+        // console.log('payment       failed');
         // alert('payment       failed');
       }
     })
