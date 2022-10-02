@@ -182,7 +182,8 @@
   $("#couponForm").validate({
     rules:{
         name:{
-            required:true
+            required:true,
+            unique:true
         },
         code:{
             required:true
@@ -194,7 +195,8 @@
     },
     messages:{
         name:{
-            required:"Enter coupon name"
+            required:"Enter coupon name",
+            unique:"This name is already exist"
         },
         code:{
             required:"Enter coupon code"
