@@ -170,15 +170,38 @@
 							<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 						</div> --}}
 						{{!-- <div class="red_button add_to_cart_button"> --}}
+							{{#if login}}
+							<div class="d-flex justify-content-center align-items-center">
 							{{#if (eq Product.quantity 0)}}
-							<button class="add-to-cart-btn btn-danger" style="border: none; width:140px ;height:40px; color:white; text-transform: uppercase;" class="" disabled onclick="">Out of stock</button>
+							<button class="add-to-cart-btn btn-danger" style="border: none; width:140px ;height:34px; color:white; text-transform: uppercase;" class="" disabled onclick="">Out of stock</button>
 							{{else}}
-							<button class="add-to-cart-btn btn-danger" style="border: none; width:140px ;height:40px; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{Product._id}}')">add to cart</button>
+							<button class="add-to-cart-btn btn-danger" style="border: none; width:140px ;height:34px; color:white; text-transform: uppercase;" class="" onclick="addToCart('{{Product._id}}')">add to cart</button>
 							{{/if}}
-							{{!-- </div> --}}
-							<div class="product_favorite d-flex justify-content-center align-items-center"><a onclick="addToWishlist('{{Product._id}}')" class=""><i id="wishlist-icon" class="fa fa-heart-o" aria-hidden="true"></i></a></div>
+							<div style=" border:#252525;" class="ml-3 border product_favorite d-flex justify-content-center align-items-center">
+								<a onclick="addToWishlist('{{Product._id}}')" class="">
+									<i style="color:red; font-size: 30px;" id="wishlist-icon" class="fa fa-heart-o" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+							{{else}}
+							<div class="d-flex justify-content-center align-items-center">
+							{{#if (eq Product.quantity 0)}}
+							<a class="d-flex justify-content-center align-items-center add-to-cart-btn btn-danger" style="border: none; width:140px ;height:34px; color:white; text-transform: uppercase;" class="" disabled onclick="">Out of stock</a>
+							{{else}}
+							<a class="d-flex justify-content-center align-items-center add-to-cart-btn btn-danger" style="border: none; width:140px ;height:34px; color:white; text-transform: uppercase;" class="" href="/toLogin">add to cart</a>
+							{{/if}}
+							<div style=" border:#252525;" class="ml-3 border product_favorite d-flex justify-content-center align-items-center">
+								<a onclick="addToWishlist('{{Product._id}}')" class="">
+									<i style="color:red; font-size: 30px;" id="wishlist-icon" class="fa fa-heart-o" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+							{{/if}}
+								</div>
+							
+							
 						{{!-- <div onclick="addToWishlist('{{Product._id}}')" class="product_favorite d-flex flex-column align-items-center justify-content-center"></div> --}}
-					</div>
+					
 				</div>
 			</div>
 		</div>
