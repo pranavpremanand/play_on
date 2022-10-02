@@ -371,10 +371,10 @@ module.exports = {
         instance.orders.create(options, function (err, order) {
           if (order) {
             console.log("NEW ORDER");
+            resolve(order);
           } else {
             console.log("ERROR", err);
           }
-          resolve(order);
         });
       } catch (err) {
         reject(err);
@@ -386,9 +386,10 @@ module.exports = {
   verifyPayment: (details) => {
     return new Promise((resolve, reject) => {
       try {
+        console.log('veriyPAYMENT')
         const crypto = require("crypto");
         let expectedSignature = crypto.createHmac(
-          process.env.RAZ_SHA,
+          "sha256",
           process.env.RAZ_SECRET
         );
         expectedSignature.update(
@@ -556,6 +557,7 @@ module.exports = {
 
   //CANCEL ORDER
   cancelOrder: (orderID) => {
+    console.log("OrderID:",orderID)
     return new Promise(async (resolve, reject) => {
       try {
         await orders.findByIdAndDelete(orderID);

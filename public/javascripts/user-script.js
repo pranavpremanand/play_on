@@ -366,7 +366,7 @@ function placeOrder() {
       }else{
         console.log("payment");
         razorpayPayment(response);
-        req.session.orderID = response.receipt
+        // req.session.orderID = response.receipt
       }
     },error:(err) => {
       console.log(err);
@@ -377,23 +377,25 @@ function placeOrder() {
 
 
 function razorpayPayment(order) {
+  console.log('razorpay paymentaaaaaaa')
+  console.log(order)
   let options = {
-    key: process.env.RAZ_KEYID, // Enter the Key ID generated from the Dashboard
+    key: "rzp_test_scEepl97MNpDhh", // Enter the Key ID generated from the Dashboard
     amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     currency: "INR",
     name: "Play On",
-    description: "Test Transaction",
+    description: "Transaction",
     image: "https://example.com/your_logo",
     order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     handler: function (response) {
-    //   alert(response.razorpay_payment_id);
-    //   alert(response.razorpay_order_id);
+      console.log('helllllllllllllooooooooooo')
+      // alert(response.razorpay_order_id);
     //   alert(response.razorpay_signature);
       verifyPayment(response, order);
     },
     prefill: {
-      name: "Gaurav Kumar",
-      email: "gaurav.kumar@example.com",
+      name: "Test name",
+      email: "test@email.com",
       contact: "9999999999",
     },
     notes: {
@@ -407,6 +409,8 @@ function razorpayPayment(order) {
   rzp1.open();
 
   function verifyPayment(payment, order) {
+    console.log('verifyyyyyyyyyy',payment)
+    console.log('verifyyyyyyyyyy',order)
     $.ajax({
       url: "/verify-payment",
       method: "post",
@@ -418,10 +422,10 @@ function razorpayPayment(order) {
           setTimeout(() => {
             location.href = '/ordersuccess/'+order.receipt
           }, 800);
-
         }else{
+          console.log("response.order",order.receipt)
           $.ajax({
-            url: '/paymentfailed/'+response.receipt,
+            url: '/paymentfailed/'+response.orderID,
             method: 'get',
             success:(response)=>{
               // location.href = '/paymentfailed'
@@ -444,7 +448,7 @@ function razorpayPayment(order) {
       success:(response)=>{
         // location.href = '/paymentfailed'
         console.log('payment       failed');
-        alert('payment       failed');
+        // alert('payment       failed');
       }
     })
 

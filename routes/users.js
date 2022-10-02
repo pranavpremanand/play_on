@@ -700,6 +700,10 @@ router.post("/place-order",userAuthentication.checkStatus, async (req, res, next
           userHelper
             .generateRazorpay(orderID, req.body.finalCost)
             .then(async (response) => {
+              console.log("razrpay");
+              console.log(response)
+              req.session.orderID = response.receipt
+              console.log("req.session.orderID",req.session.orderID)
               res.json(response);
             })
         })
@@ -715,9 +719,10 @@ router.post("/place-order",userAuthentication.checkStatus, async (req, res, next
 
 //VERIFY PAYMENT
 router.post("/verify-payment", (req, res, next) => {
-  userHelper
-    .verifyPayment(req.body)
-    .then(() => {
+  console.log('verify payment')
+  console.log('req.body',req.body)
+  userHelper.verifyPayment(req.body).then((response) => {
+      console.log(response)
       userHelper
         .changePaymentStatus(req.body["order[receipt]"])
         .then(async () => {
@@ -728,11 +733,17 @@ router.post("/verify-payment", (req, res, next) => {
           res.json({ status: true });
         })
         .catch((err) => {
-          res.json({ status: false });
+          const data = {}
+          data.status = false
+          data.orderID = req.session.orderID
+          res.json(data);
         });
     })
     .catch((err) => {
-      res.json({ status: false });
+      const data = {}
+      data.status = false
+      data.orderID = req.session.orderID
+      res.json(data);
     });
 });
 
@@ -744,10 +755,11 @@ router.get("/ordersuccess/:id",userAuthentication.userAuth,userAuthentication.ch
 //FAILED PAGE
 router.get(
   "/paymentfailed/:id",
-  userAuthentication.userAuth,userAuthentication.checkStatus,
+  userAuthentication.userAuth,
   (req, res, next) => {
+    console.log('payment failed')
     userHelper
-      .cancelOrder(req.params.id)
+      .cancelOrder(req.session.orderID)
       .then((response) => {
         res.render("user/paymentfailed", { user: true, login: true });
       })

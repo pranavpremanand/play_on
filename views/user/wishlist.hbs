@@ -93,27 +93,28 @@
 
                   <div class="row mb-4 d-flex justify-content-evenly align-items-center">
                     {{#each wishlistItems}}
-                    <div class="col-md-1 col-lg-1 col-xl-2 text-center mb-2">
+                    
+                    <div class="col-1 col-sm-1 col-lg-1 col-xl-2 text-center mb-2">
                        {{!-- <a href="/removeFromCart/{{this.productID._id}}" class="text-muted"><i class="fa fa-trash-o"></i></a> --}}
                       <a onclick="removeFromWishlist('{{this.productID._id}}')" class="text-muted"><i style="font-size: 1.2rem; color:rgb(255, 0, 0);" class="fa fa-trash-o"></i></a>
                         {{!-- <button style="border: none; border-radius:20 ; background-color: transparent;" onclick="removeFromCart('{{this.productID._id}}')"  class="text-muted"><i class="fa fa-trash-o"></i></button> --}}
                     </div>
-                    <div class="col-md-2 col-lg-2 col-xl-2 mb-2">
+                    <div class="col-4 col-sm-2 col-lg-2 col-xl-2 mb-2">
                       <a href="/singleProduct/{{this.productID._id}}"><img
-                        style="width:70px ;" src="/images/products/{{this.productID.images.[0]}}"
+                        style="width:95% ;" src="/images/products/{{this.productID.images.[0]}}"
                         class="img-fluid rounded-3" alt=""></a>
                     </div>
-                    <div class="col-md-4 col-lg-3 col-xl-3 mb-2">
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-3 mb-2">
                       {{!-- <h6 class="text-muted">{{this.productID.category}}</h6> --}}
                       <h6 class="text-black">{{this.productID.name}}</h6>
                       {{!-- <h6>{{../ID}}</h6> --}}
                     </div>
-                    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1 mb-2">
+                    <div class="col-6 col-sm-2 col-lg-2 col-xl-2 offset-lg-1 mb-2">
                       <h6 class="mb-0">₹{{this.productID.sellingPrice}}</h6>
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex mb-2">
+                    <div class="col-6 col-sm-3 col-lg-3 col-xl-2 d-flex mb-2">
                     
-                      <div class="d-flex flex-row">
+                      {{!-- <div class="d-flex flex-row"> --}}
                        
                         {{!-- {{#if (gt this.quantity 1)}}
                     <button class="btn btn-link px-2"
@@ -132,7 +133,7 @@
                     
                     <button onclick="addToCart('{{this.productID._id}}')" class="btn btn-outline-info px-2 btn-sm">ADD TO CART
                     </button>
-                  </div>
+                  {{!-- </div> --}}
                     </div>
                     
                     
