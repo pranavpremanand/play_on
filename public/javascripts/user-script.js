@@ -350,6 +350,10 @@ function placeOrder() {
   finalCost = document.getElementById("final-cost").value;
   paymentMethod = document.getElementById("paymentMethod").value;
   address = document.getElementById("address").value;
+  if(address == null){
+    swal("Select a address!", "", "warning");
+  }
+  else{
   $.ajax({
     url: "/place-order",
     method: "post",
@@ -373,6 +377,7 @@ function placeOrder() {
       console.log("Error found");
     }
 })
+}
 }
 
 
