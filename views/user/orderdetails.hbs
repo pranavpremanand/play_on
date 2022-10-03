@@ -63,8 +63,9 @@ a {
 <div class="container">
   <!-- Title -->
   <div class="row d-flex justify-content-center">
-  <div class="col-lg-10 align-items-center py-3">
+  <div class="col-lg-10 d-flex justify-content-between align-items-center py-3">
     <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> OrderID: {{orderData._id}}</h2>
+    <button onclick="printDiv('printArea')" class="btn btn-link p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text">Invoice</span></button>
   </div>
   </div>
 
@@ -82,9 +83,8 @@ a {
               <span class="badge ml-2 rounded-pill bg-info">{{orderData.orderStatus}}</span>
             </div>
             <div class="d-flex">
-              <button onclick="printDiv('printArea')" class="btn btn-link p-0 me-3 d-none d-lg-block btn-icon-text"><i class="bi bi-download"></i> <span class="text">Invoice</span></button>
               <div class="dropdown">
-                <button  class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
                   <i class="bi bi-three-dots-vertical"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
