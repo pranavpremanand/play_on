@@ -143,8 +143,10 @@
                                           {{!-- data-toggle="modal" data-target="#exampleModalCenter" --}}
                                           href="/view-order-details/{{this._id}}/{{this.address}}" >View Details</a></td>
                                       {{#ifEquals paymentStatus "Confirmed" ""}}
-                                      <td scope="col-4 col-md-2"><button type="button"
-                                          class="btn text-white btn-info btn-sm" disabled>Confirmed</button></td><td></td>
+                                      <td scope="col-4 col-md-2">
+                                        {{!-- <button type="button"
+                                          class="btn text-white btn-secondary btn-sm" disabled></button> --}}
+                                          </td><td></td>
                                       {{else}}
                                       <td scope="col-4 col-md-2"><button onclick="CancelOrder('{{this._id}}')" type="button"
                                           class="btn text-white btn-danger btn-sm">Cancel</button></td>

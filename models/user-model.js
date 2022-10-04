@@ -99,7 +99,7 @@ const userData = new schema({
         default: false
     }
 })
-const user = mongoose.model(collections.users,userData)
+const user = mongoose.model(collections.users, userData)
 // const pranav= new user({
 //     name:'pranav',
 //     phoneNumber:9633063113,

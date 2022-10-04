@@ -333,7 +333,7 @@ module.exports = {
         const noOfProducts = await products.countDocuments();
         const noOfOrders = await orders.find({orderStatus:'Delivered'}).countDocuments()
         let totalProfit = 0;
-        const ordersData = await orders.find();
+        const ordersData = await orders.find({paymentStatus:"Confirmed"});
         for (let i = 0; i < noOfOrders; i++) {
           ordersData.map((val) => {
             totalProfit = val.finalCost + totalProfit;
@@ -355,7 +355,7 @@ module.exports = {
             .lean()
             .count();
         }
-        const status = {
+        const response = {
           dateSales: dateSales,
           dateList: dateList,
           noOfUsers: noOfUsers,
@@ -363,7 +363,7 @@ module.exports = {
           noOfOrders: noOfOrders,
           totalProfit: totalProfit,
         };
-        resolve(status);
+        resolve(response);
       } catch (error) {
         reject(error);
       }
