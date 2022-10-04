@@ -673,6 +673,7 @@ router.post("/place-order",userAuthentication.checkStatus, async (req, res, next
   if (req.session.userIn) {
     const USER = await user.findOne({ _id: req.session.userData._id }).lean();
     const cart = USER.cart;
+    console.log("address",req.body.address)
     if (req.body.paymentMethod == "Cash on Delivery") {
       userHelper
         .placeOrder(req.body, req.session.userData._id, cart)

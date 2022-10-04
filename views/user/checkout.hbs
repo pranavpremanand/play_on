@@ -375,15 +375,14 @@
             </div>
 
             <div id="products" class="row mb-4">
-              
+              <input type="text" required hidden id="addressId">
               {{#each data}}
-
               <div class="">
                 <div class="col-12 col-sm-12 col-md-12">
                   <div class="form-check">
                     <div class="address-card card col-12 col-md-8 col-lg-8 m-2">
                       <div class="card-body">
-                        <input value="{{this._id}}" checked name="address" id="address" required class="form-check-input"
+                        <input value="{{this._id}}" onchange="selectAddress('{{this._id}}')" name="address" id="address" required class="form-check-input"
                           type="radio">
                         <label class="form-check-label" for="flexRadioDefault1">
                           {{!-- <span hidden></span> --}}

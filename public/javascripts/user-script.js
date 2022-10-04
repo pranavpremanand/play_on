@@ -343,14 +343,21 @@ function applyCoupon() {
 
 //PLACE ORDER
 // document.addEventListener("click", placeOrder);
+
+function selectAddress(id){
+  document.getElementById('address').value = id
+  document.getElementById('addressId').value = id
+}
+
 function placeOrder() {
   totalCost = document.getElementById("totalCost").value;
   coupon = document.getElementById("coupon").value;
   discount = document.getElementById("discount").value;
   finalCost = document.getElementById("final-cost").value;
   paymentMethod = document.getElementById("paymentMethod").value;
-  address = document.getElementById("address").value;
-  if(address == null){
+  address = document.getElementById("addressId").value;
+  console.log(address)
+  if(!address){
     swal("Select a address!", "", "warning");
   }
   else{

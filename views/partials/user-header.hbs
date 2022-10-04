@@ -1,78 +1,78 @@
-	<!-- Header -->
+<!-- Header -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/javascripts/user-script.js"></script>
-	<header class="header trans_300">
+<header class="header trans_300">
 
-		<!-- Top Navigation -->
+	<!-- Top Navigation -->
 
-		<div class="top_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="top_nav_left">free shipping on all state orders over ₹ 1200</div>
-					</div>
-					<div class="col-md-6 text-right">
-						<div class="top_nav_right">
-							<ul class="top_nav_menu">
+	<div class="top_nav">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="top_nav_left">free shipping on all state orders over ₹ 1200</div>
+				</div>
+				<div class="col-md-6 text-right">
+					<div class="top_nav_right">
+						<ul class="top_nav_menu">
 
-								
-								{{!-- <li class="language">
-									<a href="#">
-										English
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="language_selection">
-										<li><a href="#">French</a></li>
-										<li><a href="#">Italian</a></li>
-										<li><a href="#">German</a></li>
-										<li><a href="#">Spanish</a></li>
-									</ul>
-								</li> --}}
-								{{#if login}}
-								<li class="account">
-									<a href="/toProfile">
-										My Account
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="account_selection">
-                                        
-										 <li><a href="/logout">
-                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        Log Out</a></li>
-                                       	
-									</ul>
-								</li>
-								{{else}}
-								<li class="account">
-									<a href="#">
-										Login Here
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="account_selection">
-                                       <li><a href="/toLogin">
-                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        Log In</a></li>
-										<li><a href="/toSignup">
-                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                        Register</a></li>
-                                        {{/if}}
-							</ul>
-						</div>
+
+							{{!-- <li class="language">
+								<a href="#">
+									English
+									<i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="language_selection">
+									<li><a href="#">French</a></li>
+									<li><a href="#">Italian</a></li>
+									<li><a href="#">German</a></li>
+									<li><a href="#">Spanish</a></li>
+								</ul>
+							</li> --}}
+							{{#if login}}
+							<li class="account">
+								<a href="/toProfile">
+									My Account
+									<i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="account_selection">
+
+									<li><a href="/logout">
+											<i class="fa fa-sign-in" aria-hidden="true"></i>
+											Log Out</a></li>
+
+								</ul>
+							</li>
+							{{else}}
+							<li class="account">
+								<a href="#">
+									Login Here
+									<i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="account_selection">
+									<li><a href="/toLogin">
+											<i class="fa fa-sign-in" aria-hidden="true"></i>
+											Log In</a></li>
+									<li><a href="/toSignup">
+											<i class="fa fa-user-plus" aria-hidden="true"></i>
+											Register</a></li>
+									{{/if}}
+								</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Main Navigation -->
+	<!-- Main Navigation -->
 
-		<div  class="main_nav_container">
-			<div class="container justify-content-center align-items-center">
-				<div class="row">
-					{{#if login}}
-					<div class="col-lg-12 text-right" onload='count()'>
+	<div class="main_nav_container">
+		<div class="container justify-content-center align-items-center">
+			<div class="row">
+				{{#if login}}
+				<div class="col-lg-12 text-right" onload='count()'>
 					{{else}}
 					<div class="col-lg-12 text-right">
-					{{/if}}
+						{{/if}}
 						<div class="logo_container">
 							<a href="/">Play <span>On!</span></a>
 						</div>
@@ -90,14 +90,12 @@
 								<li><a href="/toWishlist"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
 								<li class="checkouta">
 									{{#if login}}
-									<a href="/toCart" 
-									{{!-- onload="costOfCartItems()" --}}
-									 >
+									<a href="/toCart" {{!-- onload="costOfCartItems()" --}}>
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 										<span id="checkout_items" class="checkout_items fw-bold"></span>
 									</a>
 									{{else}}
-									<a href="/toLogin" >
+									<a href="/toLogin">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 										<span id="checkout_items" class="checkout_items fw-bold"></span>
 									</a>
@@ -113,95 +111,95 @@
 			</div>
 		</div>
 
-	</header>
+</header>
 
 <div class="fs_menu_overlay"></div>
-	<div class="hamburger_menu">
-		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-		<div class="hamburger_menu_content text-right">
-			<ul class="menu_top_nav">
-				{{!-- <li class="menu_item has-children">
-					<a href="#">
-						usd
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">cad</a></li>
-						<li><a href="#">aud</a></li>
-						<li><a href="#">eur</a></li>
-						<li><a href="#">gbp</a></li>
-					</ul>
-				</li> --}}
-				{{!-- <li class="menu_item has-children">
-					<a href="#">
-						English
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">French</a></li>
-						<li><a href="#">Italian</a></li>
-						<li><a href="#">German</a></li>
-						<li><a href="#">Spanish</a></li>
-					</ul>
-				</li> --}}
-				
-				<li class="menu_item has-children">
-					{{#if login}}
-					<a href="#">
-						My Account
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="/logout">
-                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        Log Out</a></li>
-						
-					</ul>
-					{{else}}
-					<a href="#">
-						Login Here
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						{{!-- <li><a href="/toLogin">
-                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        Login</a></li> --}}
-						<li><a href="/toLogin">
-                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        Log In</a></li>
-										<li><a href="/toSignup">
-                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                        Register</a></li>
-					</ul>
-					{{/if}}
-				</li>
-				<li class="menu_item"><a href="/">Home</a></li>
-				<li class="menu_item"><a href="/boots">Boots</a></li>
-				<li class="menu_item"><a href="/clubjerseys">Club Jerseys</a></li>
-				<li class="menu_item"><a href="/internationaljerseys">National Jerseys</a></li>
-				{{!-- <li class="menu_item"><a href="/contact">contact</a></li> --}}
-			</ul>
-		</div>
-	</div>
+<div class="hamburger_menu">
+	<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+	<div class="hamburger_menu_content text-right">
+		<ul class="menu_top_nav">
+			{{!-- <li class="menu_item has-children">
+				<a href="#">
+					usd
+					<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="menu_selection">
+					<li><a href="#">cad</a></li>
+					<li><a href="#">aud</a></li>
+					<li><a href="#">eur</a></li>
+					<li><a href="#">gbp</a></li>
+				</ul>
+			</li> --}}
+			{{!-- <li class="menu_item has-children">
+				<a href="#">
+					English
+					<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="menu_selection">
+					<li><a href="#">French</a></li>
+					<li><a href="#">Italian</a></li>
+					<li><a href="#">German</a></li>
+					<li><a href="#">Spanish</a></li>
+				</ul>
+			</li> --}}
 
-	<script>
-		document.addEventListener('DOMContentLoaded',count);
-		function count(){
-						axios({
-							method: "get",
-							url: "/count"
-							})
-							.then(function (response) {
-								//handle success
-								if(response.data === 0){
-									document.getElementById('checkout_items').innerHTML = ''
-								}else{
-									document.getElementById('checkout_items').innerHTML = response.data
-								}
-							})
-							.catch(function (response) { 
-								//handle error
-								console.log(response)
-						});
-		}
-	</script>
+			<li class="menu_item has-children">
+				{{#if login}}
+				<a href="#">
+					My Account
+					<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="menu_selection">
+					<li><a href="/logout">
+							<i class="fa fa-sign-in" aria-hidden="true"></i>
+							Log Out</a></li>
+
+				</ul>
+				{{else}}
+				<a href="#">
+					Login Here
+					<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="menu_selection">
+					{{!-- <li><a href="/toLogin">
+							<i class="fa fa-sign-in" aria-hidden="true"></i>
+							Login</a></li> --}}
+					<li><a href="/toLogin">
+							<i class="fa fa-sign-in" aria-hidden="true"></i>
+							Log In</a></li>
+					<li><a href="/toSignup">
+							<i class="fa fa-user-plus" aria-hidden="true"></i>
+							Register</a></li>
+				</ul>
+				{{/if}}
+			</li>
+			<li class="menu_item"><a href="/">Home</a></li>
+			<li class="menu_item"><a href="/boots">Boots</a></li>
+			<li class="menu_item"><a href="/clubjerseys">Club Jerseys</a></li>
+			<li class="menu_item"><a href="/internationaljerseys">National Jerseys</a></li>
+			{{!-- <li class="menu_item"><a href="/contact">contact</a></li> --}}
+		</ul>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', count);
+	function count() {
+		axios({
+			method: "get",
+			url: "/count"
+		})
+			.then(function (response) {
+				//handle success
+				if (response.data === 0) {
+					document.getElementById('checkout_items').innerHTML = ''
+				} else {
+					document.getElementById('checkout_items').innerHTML = response.data
+				}
+			})
+			.catch(function (response) {
+				//handle error
+				console.log(response)
+			});
+	}
+</script>
