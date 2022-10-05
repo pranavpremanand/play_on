@@ -96,12 +96,12 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/categorylist" class="dropdown-item">Show Category List</a>
                             <a href="/admin/addcategory" class="dropdown-item">Add Category</a>
-                            
+
                         </div>
                     </div>
                     <a href="/admin/coupons" class="nav-link nav-item"><i class="fa fa-tags" aria-hidden="true"></i>
                         Coupons</a>
-                        <a href="/admin/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i>
+                    <a href="/admin/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                         Logout</a>
 
                 </div>
@@ -115,107 +115,111 @@
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <a href="#" class="navbar-brand d-flex d-lg-none me-4"></a>
-                    <a href="#" class="sidebar-toggler flex-shrink-0">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <div class="navbar-nav align-items-center ms-auto">
-                        {{!-- <div class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <img class="rounded-circle me-lg-2" src="/images/admin.jpg" alt=""
-                                    style="width: 35px; height: 35px;">
-                                <span class="d-none d-lg-inline-flex">Pranav</span>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    {{!-- <div class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <img class="rounded-circle me-lg-2" src="/images/admin.jpg" alt=""
+                                style="width: 35px; height: 35px;">
+                            <span class="d-none d-lg-inline-flex">Pranav</span>
 
-                            </a>
-                        </div> --}}
-                    </div>
+                        </a>
+                    </div> --}}
+                </div>
             </nav>
             <!-- Navbar End -->
 
-<div class="p-5">
-                    <div class="row">
-						<div class="col-12 col-lg-5 m-1">
-							<div class="card radius-15 bg-voilet">
-								<div class="card-body" style="background-color:#5bec69 ; opacity: 100%;">
-									<div class="d-flex align-items-center">
-										<div>
-											<h2 class="mb-0 text-white" id="orders"><i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
-										</div>
-										<div class="ms-auto font-35 text-white"><i class="bx bx-cart-alt"></i>
-										</div>
-									</div>
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-white">Orders Delivered</p>
-										</div>
-										{{!-- <div class="ms-auto font-14 text-white">+23.4%</div> --}}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg-5 m-1">
-							<div class="card radius-15 bg-primary-blue">
-								<div class="card-body" style="background-color:#448cc6 ; opacity: 100%;">
-									<div class="d-flex align-items-center">
-										<div class="d-flex">
-											<h2 class="mb-0 text-white">₹&nbsp;</h2>
-                                            <h2 class="mb-0 text-white" id="profit"><i class='bx bxs-down-arrow-alt font-14 text-white'></i> </h2>
-										</div>
-										<div class="ms-auto font-35 text-white"><i class="bx bx-support"></i>
-										</div>
-									</div>
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-white">Profit</p>
-										</div>
-										{{!-- <div class="ms-auto font-14 text-white">+14.7%</div> --}}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg-5 m-1">
-							<div class="card radius-15 bg-rose">
-								<div class="card-body" style="background-color: #de312ee9; opacity: 100%;">
-									<div class="d-flex align-items-center">
-										<div>
-											<h2 class="mb-0 text-white" id="users"><i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
-										</div>
-										<div class="ms-auto font-35 text-white"><i class="bx bx-tachometer"></i>
-										</div>
-									</div>
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-white">Users</p>
-										</div>
-										{{!-- <div class="ms-auto font-14 text-white">-12.9%</div> --}}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-lg-5 m-1">
-							<div class="card radius-15 bg-sunset">
-								<div class="card-body" style="background-color: #18765f;">
-									<div class="d-flex align-items-center">
-										<div>
-											<h2 class="mb-0 text-white" id="products"><i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
-										</div>
-										<div class="ms-auto font-35 text-white"><i class="bx bx-user"></i>
-										</div>
-									</div>
-									<div class="d-flex align-items-center">
-										<div>
-											<p class="mb-0 text-white">Products</p>
-										</div>
-										{{!-- <div class="ms-auto font-14 text-white">+13.6%</div> --}}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--end row-->
+            <div class="p-5">
+                <div class="row">
+                    <div class="col-12 col-lg-5 m-1">
+                        <div class="card radius-15 bg-voilet">
+                            <div class="card-body" style="background-color:#5bec69 ; opacity: 100%;">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h2 class="mb-0 text-white" id="orders"><i
+                                                class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                                    </div>
+                                    <div class="ms-auto font-35 text-white"><i class="bx bx-cart-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p class="mb-0 text-white">Orders Delivered</p>
+                                    </div>
+                                    {{!-- <div class="ms-auto font-14 text-white">+23.4%</div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 m-1">
+                        <div class="card radius-15 bg-primary-blue">
+                            <div class="card-body" style="background-color:#448cc6 ; opacity: 100%;">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex">
+                                        <h2 class="mb-0 text-white">₹&nbsp;</h2>
+                                        <h2 class="mb-0 text-white" id="profit"><i
+                                                class='bx bxs-down-arrow-alt font-14 text-white'></i> </h2>
+                                    </div>
+                                    <div class="ms-auto font-35 text-white"><i class="bx bx-support"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p class="mb-0 text-white">Profit</p>
+                                    </div>
+                                    {{!-- <div class="ms-auto font-14 text-white">+14.7%</div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 m-1">
+                        <div class="card radius-15 bg-rose">
+                            <div class="card-body" style="background-color: #de312ee9; opacity: 100%;">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h2 class="mb-0 text-white" id="users"><i
+                                                class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                                    </div>
+                                    <div class="ms-auto font-35 text-white"><i class="bx bx-tachometer"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p class="mb-0 text-white">Users</p>
+                                    </div>
+                                    {{!-- <div class="ms-auto font-14 text-white">-12.9%</div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 m-1">
+                        <div class="card radius-15 bg-sunset">
+                            <div class="card-body" style="background-color: #18765f;">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h2 class="mb-0 text-white" id="products"><i
+                                                class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                                    </div>
+                                    <div class="ms-auto font-35 text-white"><i class="bx bx-user"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <p class="mb-0 text-white">Products</p>
+                                    </div>
+                                    {{!-- <div class="ms-auto font-14 text-white">+13.6%</div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
 
-<div>
-    <h3 class="text-center text-white m-4"><u>Total Sales</u></h3>
-</div>
+                <div>
+                    <h3 class="text-center text-white m-4"><u>Total Sales</u></h3>
+                </div>
 
 
                 <canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
@@ -241,16 +245,16 @@
                             document.getElementById('profit').innerHTML = response.totalProfit;
                             document.getElementById('products').innerHTML = response.noOfProducts;
                             var xValues = [
-                            response.dateList[9],
-                            response.dateList[8],
-                            response.dateList[7],
-                            response.dateList[6],
-                            response.dateList[5],
-                            response.dateList[4],
-                            response.dateList[3],
-                            response.dateList[2],
-                            response.dateList[1],
-                            response.dateList[0]]
+                                response.dateList[9],
+                                response.dateList[8],
+                                response.dateList[7],
+                                response.dateList[6],
+                                response.dateList[5],
+                                response.dateList[4],
+                                response.dateList[3],
+                                response.dateList[2],
+                                response.dateList[1],
+                                response.dateList[0]]
                             new Chart("myChart", {
                                 type: "line",
                                 data: {
@@ -274,13 +278,17 @@
                                     ]
                                 },
                                 options: {
-                                    legend: { display: false }
+                                    plugins:{
+                                    legend: {
+                                        display: false
+                                    }
+                                    }
                                 }
                             });
                         })
                     })
                 </script>
-                </div>
+            </div>
         </div>
         <!-- Content End -->
 
