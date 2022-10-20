@@ -120,12 +120,12 @@ router.get("/addcategory", (req, res) => {
 });
 
 // ADD CATEGORY TO DATABASE
-router.post("/categoryAdded", (req, res,next) => {
+router.post("/categoryAdded", (req, res, next) => {
   adminHelper
     .addCategory(req.body)
     .then((response) => {
       if (response.status) {
-        req.session.categoryList = response.categories
+        req.session.categoryList = response.categories;
         req.session.categoryAdded = true;
         req.session.addingCategoryFailed = false;
         res.redirect("/admin/addcategory");
@@ -136,30 +136,30 @@ router.post("/categoryAdded", (req, res,next) => {
       }
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
       next(err);
     });
 });
 
 // GET CATEGORY LIST PAGE
-router.get("/categorylist",async (req, res) => {
+router.get("/categorylist", async (req, res) => {
   if (req.session.admin) {
-    const categoryList = await categories.find().lean()
+    const categoryList = await categories.find().lean();
     if (req.session.editedCategory) {
       res.render("admin/categorylist", {
         success: true,
-        categoryList
+        categoryList,
       });
       req.session.editedCategory = false;
     } else if (req.session.deletedCategory) {
       res.render("admin/categorylist", {
         deleted: true,
-        categoryList
+        categoryList,
       });
       req.session.deletedCategory = false;
     } else {
       res.render("admin/categorylist", {
-        categoryList
+        categoryList,
       });
     }
   } else {
@@ -226,15 +226,18 @@ router.get("/addproduct", (req, res) => {
 router.post(
   "/productAdded",
   productHelper.uploadProductsImgs,
-  async (req, res ,next) => {
+  async (req, res, next) => {
     const imgs = req.files;
     let images = imgs.map((value) => value.filename);
     req.body.images = images;
-    productHelper.addProduct(req.body).then((result) => {
-      res.redirect("/admin/addproduct");
-    }).catch((err)=>{
-      next(err)
-    })
+    productHelper
+      .addProduct(req.body)
+      .then((result) => {
+        res.redirect("/admin/addproduct");
+      })
+      .catch((err) => {
+        next(err);
+      });
   }
 );
 
@@ -329,7 +332,7 @@ router.get("/deleteProduct/:id", (req, res, next) => {
     productHelper
       .deleteProduct(ID)
       .then((response) => {
-        req.session.productDeleted = true
+        req.session.productDeleted = true;
         res.redirect("/admin/viewallproducts");
       })
       .catch((err) => {
@@ -343,8 +346,11 @@ router.get("/deleteProduct/:id", (req, res, next) => {
 // GET EDIT BANNER
 router.get("/edit-banner", async (req, res) => {
   if (req.session.admin) {
-    const bannerData = await bannerModel.findOne().lean()
-    res.render("admin/editbanner", { bannerData, categoryList: req.session.categoryList });
+    const bannerData = await bannerModel.findOne().lean();
+    res.render("admin/editbanner", {
+      bannerData,
+      categoryList: req.session.categoryList,
+    });
   } else {
     res.redirect("/");
   }
@@ -387,7 +393,7 @@ router.get("/add-coupon", (req, res) => {
 //ADD COUPON
 router.post("/added-coupon", (req, res, next) => {
   if (req.session.admin) {
-    console.log(req.body)
+    console.log(req.body);
     adminHelper
       .addCoupon(req.body)
       .then((status) => {

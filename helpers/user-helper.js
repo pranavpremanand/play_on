@@ -202,9 +202,9 @@ module.exports = {
   addAddress: (data, ID) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const userDetails = await user.findByIdAndUpdate(
-          { _id: ID },
-          { $push: { addresses: data } }
+          await user.findByIdAndUpdate(
+            { _id: ID },
+            { $push: { addresses: data } }
         );
         resolve({ status: true });
       } catch (error) {

@@ -17,12 +17,12 @@ const wishlistHelper = require("../helpers/wishlist-helper");
 const userAuthentication = require("../middlewares/users");
 const bannerModel = require("../models/banner-model");
 const { findOne } = require("../models/user-model");
-const serviceID = process.env.SERVICEID
-const accountSid = process.env.ACCOUNTSID
-const authToken = process.env.AUTHTOKEN
+const serviceID = process.env.SERVICEID;
+const accountSid = process.env.ACCOUNTSID;
+const authToken = process.env.AUTHTOKEN;
 const client = require("twilio")(accountSid, authToken);
 /* GET home page. */
-router.get("/",userAuthentication.checkStatus, function (req, res, next) {
+router.get("/", userAuthentication.checkStatus, function (req, res, next) {
   product
     .find()
     .lean()
@@ -48,7 +48,7 @@ router.get("/",userAuthentication.checkStatus, function (req, res, next) {
 });
 
 // TO LOGIN PAGE
-router.get("/toLogin",userAuthentication.checkStatus, (req, res) => {
+router.get("/toLogin", userAuthentication.checkStatus, (req, res) => {
   if (req.session.userIn) {
     res.redirect("/");
   } else if (req.session.blocked) {
@@ -63,7 +63,7 @@ router.get("/toLogin",userAuthentication.checkStatus, (req, res) => {
 });
 
 // WHEN LOGIN
-router.post("/userLoggedin",(req, res, next) => {
+router.post("/userLoggedin", (req, res, next) => {
   userHelper
     .doLogin(req.body)
     .then((result) => {
@@ -85,12 +85,10 @@ router.post("/userLoggedin",(req, res, next) => {
         req.session.noUser = true;
         res.redirect("/toLogin");
       } else {
-        userHelper
-          .sendOTP(req.body)
-          .then((response) => {
-            req.session.mobile = response.phone;
-            res.redirect("/verifyotp");
-          })
+        userHelper.sendOTP(req.body).then((response) => {
+          req.session.mobile = response.phone;
+          res.redirect("/verifyotp");
+        });
       }
     })
     .catch((err) => {
@@ -99,7 +97,7 @@ router.post("/userLoggedin",(req, res, next) => {
 });
 
 // TO SIGNUP PAGE
-router.get("/toSignup",userAuthentication.checkStatus, (req, res) => {
+router.get("/toSignup", userAuthentication.checkStatus, (req, res) => {
   if (req.session.userIn) {
     res.redirect("/");
   } else if (req.session.userExist) {
@@ -135,7 +133,7 @@ router.post("/userSignedup", (req, res, next) => {
 });
 
 //WHEN USER TRYING TO GET OTP VERIFICATION PAGE
-router.get("/verifyotp",userAuthentication.checkStatus, (req, res) => {
+router.get("/verifyotp", userAuthentication.checkStatus, (req, res) => {
   const mobile = req.session.mobile;
   if (req.session.userIn) {
     res.redirect("/");
@@ -190,9 +188,9 @@ router.get("/logout", (req, res) => {
 });
 
 //GET BOOTS PAGE
-router.get("/boots",userAuthentication.checkStatus, (req, res, next) => {
+router.get("/boots", userAuthentication.checkStatus, (req, res, next) => {
   product
-    .find({ category: "6336900799995afa53f7304e"})
+    .find({ category: "6336900799995afa53f7304e" })
     .lean()
     .exec((err, data) => {
       const products = data;
@@ -216,7 +214,7 @@ router.get("/boots",userAuthentication.checkStatus, (req, res, next) => {
 });
 
 //GET CLUB JERSEYS PAGE
-router.get("/clubjerseys",userAuthentication.checkStatus, (req, res) => {
+router.get("/clubjerseys", userAuthentication.checkStatus, (req, res) => {
   product
     .find({ category: "63368ff699995afa53f73046" })
     .lean()
@@ -242,49 +240,65 @@ router.get("/clubjerseys",userAuthentication.checkStatus, (req, res) => {
 });
 
 //GET INTERNATIONAL JERSEYS PAGE
-router.get("/internationaljerseys",userAuthentication.checkStatus, (req, res) => {
-  product
-    .find({ category: "6336900199995afa53f7304a" })
-    .lean()
-    .exec((err, data) => {
-      const products = data;
-      const category = "National Jerseys";
-      if (req.session.userIn) {
-        res.render("user/viewproducts", {
-          products,
-          category,
-          user: true,
-          login: true,
-        });
-      } else {
-        res.render("user/viewproducts", {
-          products,
-          category,
-          user: true,
-          login: false,
-        });
-      }
-    });
-});
+router.get(
+  "/internationaljerseys",
+  userAuthentication.checkStatus,
+  (req, res) => {
+    product
+      .find({ category: "6336900199995afa53f7304a" })
+      .lean()
+      .exec((err, data) => {
+        const products = data;
+        const category = "National Jerseys";
+        if (req.session.userIn) {
+          res.render("user/viewproducts", {
+            products,
+            category,
+            user: true,
+            login: true,
+          });
+        } else {
+          res.render("user/viewproducts", {
+            products,
+            category,
+            user: true,
+            login: false,
+          });
+        }
+      });
+  }
+);
 
 //GET SINGLE PRODUCT PAGE
-router.get("/singleProduct/:id",userAuthentication.checkStatus, (req, res, next) => {
-  const ID = req.params.id;
-  product
-    .findOne({ _id: ID })
-    .lean()
-    .then((data) => {
-      const Product = data;
-      if (req.session.userIn) {
-        res.render("user/singleproduct", { Product, user: true, login: true });
-      } else {
-        res.render("user/singleproduct", { Product, user: true, login: false });
-      }
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+router.get(
+  "/singleProduct/:id",
+  userAuthentication.checkStatus,
+  (req, res, next) => {
+    const ID = req.params.id;
+    product
+      .findOne({ _id: ID })
+      .lean()
+      .then((data) => {
+        const Product = data;
+        if (req.session.userIn) {
+          res.render("user/singleproduct", {
+            Product,
+            user: true,
+            login: true,
+          });
+        } else {
+          res.render("user/singleproduct", {
+            Product,
+            user: true,
+            login: false,
+          });
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+);
 
 //GET CONTACT PAGE
 // router.get("/contact", (req, res) => {
@@ -296,42 +310,66 @@ router.get("/singleProduct/:id",userAuthentication.checkStatus, (req, res, next)
 // });
 
 //GET CART PAGE
-router.get("/toCart",userAuthentication.checkStatus, async (req, res, next) => {
-  if (req.session.userIn) {
-    const data = await user
-      .findOne({ _id: req.session.userData._id })
-      .populate("cart.productID")
-      .populate("cart.productID.category")
-      .lean();
-    data.cart.map(async (val) => {
-      if (val.productID.quantity == 0) {
-        await user.findByIdAndUpdate(
-          { _id: req.session.userData._id },
-          { $pull: { cart: { productID: val.productID } } }
-        );
-      }
-    });
-    const ID = req.session.userData._id;
-    cartHelper
-      .cartItemsCost(ID)
-      .then((cost) => {
-        let items = data.cart;
-        res.render("user/cart", { user: true, login: true, items, ID, cost });
-      })
-      .catch((err) => {
-        next(err);
+router.get(
+  "/toCart",
+  userAuthentication.checkStatus,
+  async (req, res, next) => {
+    if (req.session.userIn) {
+      const data = await user
+        .findOne({ _id: req.session.userData._id })
+        .populate("cart.productID")
+        .populate("cart.productID.category")
+        .lean();
+      data.cart.map(async (val) => {
+        if (val.productID.quantity == 0) {
+          await user.findByIdAndUpdate(
+            { _id: req.session.userData._id },
+            { $pull: { cart: { productID: val.productID } } }
+          );
+        }
       });
-  } else {
-    res.redirect("/toLogin");
+      const ID = req.session.userData._id;
+      cartHelper
+        .cartItemsCost(ID)
+        .then((cost) => {
+          let items = data.cart;
+          res.render("user/cart", { user: true, login: true, items, ID, cost });
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.redirect("/toLogin");
+    }
   }
-});
+);
 
 //ADD PRODUCT TO CART
-router.get("/addToCart/:id",userAuthentication.checkStatus, (req, res, next) => {
-  if (req.session.userData._id) {
-    const ID = req.params.id;
+router.get(
+  "/addToCart/:id",
+  userAuthentication.checkStatus,
+  (req, res, next) => {
+    if (req.session.userData._id) {
+      const ID = req.params.id;
+      cartHelper
+        .addToCart(ID, req.session.userData._id)
+        .then((response) => {
+          res.json(response);
+        })
+        .catch((err) => {
+          next(err);
+        });
+    }
+  }
+);
+
+//REMOVE FROM CART
+router.get(
+  "/removeFromCart/:id",
+  userAuthentication.checkStatus,
+  (req, res, next) => {
     cartHelper
-      .addToCart(ID, req.session.userData._id)
+      .removeCartItem(req.params.id, req.session.userData._id)
       .then((response) => {
         res.json(response);
       })
@@ -339,19 +377,7 @@ router.get("/addToCart/:id",userAuthentication.checkStatus, (req, res, next) => 
         next(err);
       });
   }
-});
-
-//REMOVE FROM CART
-router.get("/removeFromCart/:id",userAuthentication.checkStatus, (req, res, next) => {
-  cartHelper
-    .removeCartItem(req.params.id, req.session.userData._id)
-    .then((response) => {
-      res.json(response);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+);
 
 //COUNT OF CART ITEMS
 router.get("/count", async (req, res, next) => {
@@ -407,7 +433,7 @@ router.get("/costOfCartItems", (req, res, next) => {
 });
 
 //GET WISHLIST PAGE
-router.get("/toWishlist",userAuthentication.checkStatus, async (req, res) => {
+router.get("/toWishlist", userAuthentication.checkStatus, async (req, res) => {
   if (req.session.userIn) {
     const ID = req.session.userData._id;
     const items = await user
@@ -452,7 +478,7 @@ router.get(
 );
 
 //GET USER PROFILE
-router.get("/toProfile",userAuthentication.checkStatus, (req, res, next) => {
+router.get("/toProfile", userAuthentication.checkStatus, (req, res, next) => {
   if (req.session.userIn) {
     userHelper
       .getProfile(req.session.userData._id)
@@ -468,37 +494,45 @@ router.get("/toProfile",userAuthentication.checkStatus, (req, res, next) => {
 });
 
 //GET MANAGE ADDRESS PAGE
-router.get("/manage-addresses",userAuthentication.checkStatus, async (req, res, next) => {
-  if (req.session.userIn) {
-    await userHelper
-      .getAddresses(req.session.userData._id)
-      .then((data) => {
-        res.render("user/addresses", { data, login: true });
-      })
-      .catch((err) => {
-        next(err);
-      });
-  } else {
-    res.redirect("/toLogin");
+router.get(
+  "/manage-addresses",
+  userAuthentication.checkStatus,
+  async (req, res, next) => {
+    if (req.session.userIn) {
+      await userHelper
+        .getAddresses(req.session.userData._id)
+        .then((data) => {
+          res.render("user/addresses", { data, login: true });
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.redirect("/toLogin");
+    }
   }
-});
+);
 
 //GET ADD ADDRESS PAGE FROM CHECKOUT
-router.get("/add-address",userAuthentication.checkStatus, async (req, res, next) => {
-  if (req.session.userIn) {
-    await userHelper
-      .getAddresses(req.session.userData._id)
-      .then((data) => {
-        const toCheckout = true;
-        res.render("user/addresses", { toCheckout, data, login: true });
-      })
-      .catch((err) => {
-        next(err);
-      });
-  } else {
-    res.redirect("/toLogin");
+router.get(
+  "/add-address",
+  userAuthentication.checkStatus,
+  async (req, res, next) => {
+    if (req.session.userIn) {
+      await userHelper
+        .getAddresses(req.session.userData._id)
+        .then((data) => {
+          const toCheckout = true;
+          res.render("user/addresses", { toCheckout, data, login: true });
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.redirect("/toLogin");
+    }
   }
-});
+);
 
 //ADD ADDRESS
 router.post("/add-address", (req, res, next) => {
@@ -517,20 +551,24 @@ router.post("/add-address", (req, res, next) => {
 });
 
 //ADD ADDRESS AND GET CHECKOUT
-router.post("/add-and-get-checkout",userAuthentication.checkStatus, (req, res, next) => {
-  if (req.session.userIn) {
-    userHelper
-      .addAddress(req.body, req.session.userData._id)
-      .then(() => {
-        res.redirect("/checkout");
-      })
-      .catch((err) => {
-        next(err);
-      });
-  } else {
-    res.redirect("/toLogin");
+router.post(
+  "/add-and-get-checkout",
+  userAuthentication.checkStatus,
+  (req, res, next) => {
+    if (req.session.userIn) {
+      userHelper
+        .addAddress(req.body, req.session.userData._id)
+        .then(() => {
+          res.redirect("/checkout");
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.redirect("/toLogin");
+    }
   }
-});
+);
 
 //REMOVE ADDRESS
 router.get("/delete-address/:addressID", (req, res, next) => {
@@ -549,7 +587,7 @@ router.get("/delete-address/:addressID", (req, res, next) => {
 });
 
 //GET EDIT PROFILE PAGE
-router.get("/edit-profile",userAuthentication.checkStatus, (req, res) => {
+router.get("/edit-profile", userAuthentication.checkStatus, (req, res) => {
   if (req.session.userIn) {
     const User = req.session.userData;
     res.render("user/editprofile", { User, login: true });
@@ -577,20 +615,24 @@ router.post("/update-profile", (req, res, next) => {
 });
 
 //EDIT ADDRESS
-router.get("/edit-address/:id",userAuthentication.checkStatus, (req, res, next) => {
-  if (req.session.userIn) {
-    userHelper
-      .editAddress(req.params.id, req.session.userData._id)
-      .then((data) => {
-        res.render("user/editaddress", { data, login: true });
-      })
-      .catch((err) => {
-        next(err);
-      });
-  } else {
-    res.redirect("/toLogin");
+router.get(
+  "/edit-address/:id",
+  userAuthentication.checkStatus,
+  (req, res, next) => {
+    if (req.session.userIn) {
+      userHelper
+        .editAddress(req.params.id, req.session.userData._id)
+        .then((data) => {
+          res.render("user/editaddress", { data, login: true });
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.redirect("/toLogin");
+    }
   }
-});
+);
 
 //UPDATE ADDRESS
 router.post("/edited-address/:id", (req, res, next) => {
@@ -625,36 +667,40 @@ router.post("/update-password", (req, res, next) => {
 });
 
 //CHECKOUT
-router.get("/checkout",userAuthentication.checkStatus, async (req, res, next) => {
-  if (req.session.userIn) {
-    totalCost = await cartHelper.cartItemsCost(req.session.userData._id);
-    userHelper
-      .getAddresses(req.session.userData._id)
-      .then(async (data) => {
-        const USER = await user
-          .findOne({ _id: req.session.userData._id })
-          .populate("coupons.coupon")
-          .lean();
-        const coupons = USER.coupons;
-        if (USER.cart[0]) {
-          res.render("user/checkout", {
-            coupons,
-            totalCost,
-            data,
-            login: true,
-            user: true,
-          });
-        } else {
-          res.redirect("/toCart");
-        }
-      })
-      .catch((err) => {
-        next(err);
-      });
-  } else {
-    res.redirect("/toLogin");
+router.get(
+  "/checkout",
+  userAuthentication.checkStatus,
+  async (req, res, next) => {
+    if (req.session.userIn) {
+      totalCost = await cartHelper.cartItemsCost(req.session.userData._id);
+      userHelper
+        .getAddresses(req.session.userData._id)
+        .then(async (data) => {
+          const USER = await user
+            .findOne({ _id: req.session.userData._id })
+            .populate("coupons.coupon")
+            .lean();
+          const coupons = USER.coupons;
+          if (USER.cart[0]) {
+            res.render("user/checkout", {
+              coupons,
+              totalCost,
+              data,
+              login: true,
+              user: true,
+            });
+          } else {
+            res.redirect("/toCart");
+          }
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.redirect("/toLogin");
+    }
   }
-});
+);
 
 //APPLY COUPON
 router.post("/apply-coupon", (req, res, next) => {
@@ -669,61 +715,67 @@ router.post("/apply-coupon", (req, res, next) => {
 });
 
 //PLACE ORDER
-router.post("/place-order",userAuthentication.checkStatus, async (req, res, next) => {
-  if (req.session.userIn) {
-    const USER = await user.findOne({ _id: req.session.userData._id }).lean();
-    const cart = USER.cart;
-    console.log("address",req.body.address)
-    if (req.body.paymentMethod == "Cash on Delivery") {
-      userHelper
-        .placeOrder(req.body, req.session.userData._id, cart)
-        .then(async () => {
-          await user.findByIdAndUpdate(
-            { _id: req.session.userData._id },
-            { $pull: { cart: {}, multi: true } }
-          );
-          const response = {
-            CODstatus: true,
-            id:
-              "64s32gh74dfg87gh2dg34" +
-              req.session.userData._id +
-              "793fg47kjh345",
-          };
-          res.json(response);
-        })
-        .catch((err) => {
-          next(err);
-        });
-    } else if (req.body.paymentMethod == "Razorpay") {
-      userHelper
-        .placeOrder(req.body, req.session.userData._id, cart)
-        .then((orderID) => {
-          userHelper
-            .generateRazorpay(orderID, req.body.finalCost)
-            .then(async (response) => {
-              console.log("razrpay");
-              console.log(response)
-              req.session.orderID = response.receipt
-              console.log("req.session.orderID",req.session.orderID)
-              res.json(response);
-            })
-        })
-        .catch((err) => {
-          console.log("error", err);
-          next(err);
-        });
-    } else {
-      res.render("error");
+router.post(
+  "/place-order",
+  userAuthentication.checkStatus,
+  async (req, res, next) => {
+    if (req.session.userIn) {
+      const USER = await user.findOne({ _id: req.session.userData._id }).lean();
+      const cart = USER.cart;
+      console.log("address", req.body.address);
+      if (req.body.paymentMethod == "Cash on Delivery") {
+        userHelper
+          .placeOrder(req.body, req.session.userData._id, cart)
+          .then(async () => {
+            await user.findByIdAndUpdate(
+              { _id: req.session.userData._id },
+              { $pull: { cart: {}, multi: true } }
+            );
+            const response = {
+              CODstatus: true,
+              id:
+                "64s32gh74dfg87gh2dg34" +
+                req.session.userData._id +
+                "793fg47kjh345",
+            };
+            res.json(response);
+          })
+          .catch((err) => {
+            next(err);
+          });
+      } else if (req.body.paymentMethod == "Razorpay") {
+        userHelper
+          .placeOrder(req.body, req.session.userData._id, cart)
+          .then((orderID) => {
+            userHelper
+              .generateRazorpay(orderID, req.body.finalCost)
+              .then(async (response) => {
+                console.log("razrpay");
+                console.log(response);
+                req.session.orderID = response.receipt;
+                console.log("req.session.orderID", req.session.orderID);
+                res.json(response);
+              });
+          })
+          .catch((err) => {
+            console.log("error", err);
+            next(err);
+          });
+      } else {
+        res.render("error");
+      }
     }
   }
-});
+);
 
 //VERIFY PAYMENT
 router.post("/verify-payment", (req, res, next) => {
-  console.log('verify payment')
-  console.log('req.body',req.body)
-  userHelper.verifyPayment(req.body).then((response) => {
-      console.log(response)
+  console.log("verify payment");
+  console.log("req.body", req.body);
+  userHelper
+    .verifyPayment(req.body)
+    .then((response) => {
+      console.log(response);
       userHelper
         .changePaymentStatus(req.body["order[receipt]"])
         .then(async () => {
@@ -734,31 +786,36 @@ router.post("/verify-payment", (req, res, next) => {
           res.json({ status: true });
         })
         .catch((err) => {
-          const data = {}
-          data.status = false
-          data.orderID = req.session.orderID
+          const data = {};
+          data.status = false;
+          data.orderID = req.session.orderID;
           res.json(data);
         });
     })
     .catch((err) => {
-      const data = {}
-      data.status = false
-      data.orderID = req.session.orderID
+      const data = {};
+      data.status = false;
+      data.orderID = req.session.orderID;
       res.json(data);
     });
 });
 
 //SUCCESS PAGE
-router.get("/ordersuccess/:id",userAuthentication.userAuth,userAuthentication.checkStatus, (req, res) => {
-  res.render("user/ordersuccess", { user: true, login: true });
-});
+router.get(
+  "/ordersuccess/:id",
+  userAuthentication.userAuth,
+  userAuthentication.checkStatus,
+  (req, res) => {
+    res.render("user/ordersuccess", { user: true, login: true });
+  }
+);
 
 //FAILED PAGE
 router.get(
   "/paymentfailed/:id",
   userAuthentication.userAuth,
   (req, res, next) => {
-    console.log('payment failed')
+    console.log("payment failed");
     userHelper
       .cancelOrder(req.session.orderID)
       .then((response) => {
@@ -771,21 +828,27 @@ router.get(
 );
 
 //VIEW ORDERS
-router.get("/view-orders", userAuthentication.userAuth,userAuthentication.checkStatus, (req, res, next) => {
-  userHelper
-    .getOrders(req.session.userData._id)
-    .then((orders) => {
-      res.render("user/vieworders", { orders, user: true, login: true });
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+router.get(
+  "/view-orders",
+  userAuthentication.userAuth,
+  userAuthentication.checkStatus,
+  (req, res, next) => {
+    userHelper
+      .getOrders(req.session.userData._id)
+      .then((orders) => {
+        res.render("user/vieworders", { orders, user: true, login: true });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+);
 
 // VIEW ORDER DETAILS
 router.get(
   "/view-order-details/:orderid/:address",
-  userAuthentication.userAuth,userAuthentication.checkStatus,
+  userAuthentication.userAuth,
+  userAuthentication.checkStatus,
   (req, res, next) => {
     const orderID = req.params.orderid;
     const addressID = req.params.address;
@@ -809,11 +872,15 @@ router.get(
 );
 
 //CANCEL ORDEr
-router.get("/cancel-order/:id", userAuthentication.userAuth,(req, res, next) => {
-  userHelper
-    .cancelOrder(req.params.id, req.session.userData._id)
-    .then((response) => {
-      res.json(response);
-    })
-});
+router.get(
+  "/cancel-order/:id",
+  userAuthentication.userAuth,
+  (req, res, next) => {
+    userHelper
+      .cancelOrder(req.params.id, req.session.userData._id)
+      .then((response) => {
+        res.json(response);
+      });
+  }
+);
 module.exports = router;
