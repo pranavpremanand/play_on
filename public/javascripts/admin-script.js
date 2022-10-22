@@ -14,12 +14,14 @@ if(!name==null||!discount==null||!code==null){
         },
         success:(response)=>{
             // setTimeout(() => {
-                    swal("Coupon added successfully", "", "success");
+                    swal("Coupon added successfully", "", "success",{
+                        buttons:false,timer:800});
             // },800);
         },
         error:(err)=>{
             // setTimeout(() => {
-                    swal("Something went wrong", "", "warning");
+                    swal("Something went wrong", "", "error",{
+                        buttons:false,timer:800});
             // },800);
         }
     })
@@ -40,9 +42,11 @@ function updateCoupon(ID){
             code:code,
             discount:discount
         },success:(response)=>{
-            swal("Coupon edited successfully", "", "success");
+            swal("Coupon edited successfully", "", "success",{
+                buttons:false,timer:800});
         },error:(err)=>{
-            swal("Something went wrong! Try again.", "", "warning");
+            swal("Something went wrong! Try again.", "", "error",{
+                buttons:false,timer:800});
         }
     })
  }
@@ -64,7 +68,8 @@ function deleteCoupon(ID){
             url:'/admin/delete-coupon/'+ID,
             method:'get',
             success:(response)=>{
-                swal("Coupon deleted!", "", "success");
+                swal("Coupon deleted!", "", "success",{
+                    buttons:false,timer:800});
                  $("#coupons").load(location.href + " #coupons"); 
             }
         })
@@ -87,12 +92,14 @@ function cancelOrder(orderID){
                 url:'/admin/cancel-order/'+orderID,
                 method:'get',
                 success:(response)=>{
-                    swal("Order Cancelled!", "", "success");
+                    swal("Order Cancelled!", "", "success",{
+                        buttons:false,timer:800});
                     $("#orders").load(location.href + " #orders"); 
                 },
                 error:(err)=>{
                     console.log(err);
-                    swal("Something went wrong", "", "warning");
+                    swal("Something went wrong", "", "error",{
+                        buttons:false,timer:800});
                 }
         })
         }
@@ -153,12 +160,14 @@ function deleteProduct(ID){
                 url:'/admin/deleteProduct/'+ID,
                 method:'get',
                 success:(response)=>{
-                    swal("Product deleted successfully!", "", "success");
+                    swal("Product deleted successfully!", "", "success",{
+                        buttons:false,timer:800});
                     $("#products").load(location.href + " #products"); 
                 },
                 error:(err)=>{
                     console.log(err);
-                    swal("Something went wrong", "", "warning");
+                    swal("Something went wrong", "", "error",{
+                        buttons:false,timer:800});
                 }
         })
         }
@@ -208,11 +217,13 @@ function blockUser(id){
                 method:'get',
                 success:(response)=>{
                     swal("User blocked!", "", "success");
-                    $("#users").load(location.href + " #users"); 
+                    $("#users").load(location.href + " #users",{
+                        buttons:false,timer:800}); 
                 },
                 error:(err)=>{
                     console.log(err);
-                    swal("Something went wrong", "", "warning");
+                    swal("Something went wrong", "", "error",{
+                        buttons:false,timer:800});
                 }
         })
         }
@@ -234,12 +245,14 @@ function unblockUser(id){
                 url:'/admin/unblock/'+id,
                 method:'get',
                 success:(response)=>{
-                    swal("User unblocked!", "", "success");
+                    swal("User unblocked!", "", "success",{
+                        buttons:false,timer:800});
                     $("#users").load(location.href + " #users"); 
                 },
                 error:(err)=>{
                     console.log(err);
-                    swal("Something went wrong", "", "warning");
+                    swal("Something went wrong", "", "error",{
+                        buttons:false,timer:800});
                 }
         })
         }
@@ -262,11 +275,13 @@ function deleteCategory(id){
                 method:'get',
                 success:(response)=>{
                     swal("Category deleted!", "", "success");
-                    $("#category").load(location.href + " #category"); 
+                    $("#category").load(location.href + " #category",{
+                        buttons:false,timer:800}); 
                 },
                 error:(err)=>{
                     console.log(err);
-                    swal("Something went wrong", "", "warning");
+                    swal("Something went wrong", "", "error",{
+                        buttons:false,timer:800});
                 }
         })
         }

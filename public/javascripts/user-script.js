@@ -7,10 +7,12 @@ function addToCart(prodID) {
     success: (response) => {
       // console.log(response);
       if(response.outOfStock){
-        swal("Out of Stock!", "", "warning");
+        swal("Out of Stock!", "", "warning",{buttons:false,timer:800});
       }else{
       $("#checkout_items").html(response.countOfItems);
-      swal("Item added to Cart!", "", "success");
+      swal("Item added to Cart!", "", "success",{
+        buttons:false, timer:800
+      });
       // $("#products").load(location.href + " #products");
     }
     },
@@ -32,7 +34,8 @@ function removeFromCart(prodId) {
         url: "/removeFromCart/" + prodId,
         method: "get",
         success: (response) => {
-          swal("Item removed from Cart!", "", "success");
+          swal("Item removed from Cart!", "", "success",{
+            buttons:false,timer:800});
           // setTimeout(() => {
             // $("#products").load(location.href + " #products");
             // $("#total-cost").load(location.href + " #total-cost");
@@ -137,11 +140,13 @@ function addToWishlist(productID) {
     success: (response) => {
       if (response.removed) {
         console.log("success");
-        swal("Item removed from Wishlist!", "", "success");
+        swal("Item removed from Wishlist!", "", "success",{
+          buttons:false,timer:800});
       } else {
         console.log("success");
         // document.getElementById('wishlist-icon').style.backgroundColor = 'Red'
-        swal("Item added to Wishlist!", "", "success");
+        swal("Item added to Wishlist!", "", "success",{
+          buttons:false,timer:800});
       }
     },
   });
@@ -161,7 +166,8 @@ function removeFromWishlist(prodId) {
         url: "/removeFromWishlist/" + prodId,
         method: "get",
         success: (response) => {
-          swal("Item removed from Wishlist!", "", "success");
+          swal("Item removed from Wishlist!", "", "success",{
+            buttons:false,timer:800});
           $("#products").load(location.href + " #products");
         },
       });
@@ -193,7 +199,7 @@ function deleteAddress(addressID) {
 
 //UPDATE PASSWORD
 // $(()=>{
-//     $('#submitButton').click(function(ev){
+//     $('#submitbuttons').click(function(ev){
 //         const form = $('#passwordForm')
 //         const url = form.attr('/update-password')
 //         $.ajax({
@@ -229,11 +235,14 @@ function updatePassword(ID) {
         console.log(response);
         console.log("response");
         if (response.data.success) {
-          swal("Password updated!", "", "success");
+          swal("Password updated!", "", "success",{
+            buttons:false,timer:800});
         } else if (response.data.repeatIncorrect) {
-          swal("Re-entered password is incorrect!", "", "danger");
+          swal("Re-entered password is incorrect!", "", "danger",{
+            buttons:false,timer:800});
         } else if (response.data.oldIncorrect) {
-          swal("Current password is incorrect!", "", "warning");
+          swal("Current password is incorrect!", "", "warning",{
+            buttons:false,timer:800});
         }
         //  document.getElementById('product'+pdtID).innerHTML = response;
         // location.reload();
@@ -274,9 +283,10 @@ function updateAddress(ID) {
           district: district,
         },
         success: (response) => {
-          swal("Address updated!", "", "success");
+          swal("Address updated!", "", "success",{buttons:false,timer:800});
         },
-        error: (err) => swal("Something went wrong!", "", "warning"),
+        error: (err) => swal("Something went wrong!", "", "warning",{
+          buttons:false,timer:800}),
       });
     }
 }
@@ -304,9 +314,11 @@ $('#editProfile').submit(function(event){
         // document.getElementById('email').value = response.updatedData.email
         // document.getElementById('name').value = response.updatedData.name
         // location.reload()
-        swal("Profile updated!", "", "success");
+        swal("Profile updated!", "", "success",{
+          buttons:false});
       },
-      error: (err) => swal("Something went wrong!", "", "warning"),
+      error: (err) => swal("Something went wrong!", "", "warning",{
+        buttons:false,timer:800}),
     });
     // event.preventDefault();
     // })  })
@@ -329,13 +341,15 @@ function applyCoupon() {
     success: (response) => {
       console.log(response);
       if (response.status) {
-        swal("Coupon applied!", "", "success");
+        swal("Coupon applied!", "", "success",{
+          buttons:false});
         document.getElementById("discount").value = response.discount;
         document.getElementById("discountAmt").innerHTML = response.discount;
         document.getElementById("finalCost").innerHTML = response.finalAmount;
         document.getElementById("final-cost").value = response.finalAmount;
       } else {
-        swal("Enter a valid coupon code!", "", "warning");
+        swal("Enter a valid coupon code!", "", "warning",{
+          buttons:false,timer:800});
       }
     },
   });
@@ -358,7 +372,8 @@ function placeOrder() {
   address = document.getElementById("addressId").value;
   console.log(address)
   if(!address){
-    swal("Select a address!", "", "warning");
+    swal("Select an address!", "", "warning",{
+      buttons:false,timer:800});
   }
   else{
   $.ajax({
