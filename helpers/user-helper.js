@@ -3,8 +3,6 @@ const user = require("../models/user-model");
 const admin = require("../models/admin-model");
 const coupons = require("../models/coupon-model");
 const orders = require("../models/order-model");
-const { users, products } = require("../config/collections");
-const { response } = require("../app");
 const productModel = require("../models/product-model");
 
 require("../config/server");
@@ -25,6 +23,7 @@ module.exports = {
   addUser: (userData) => {
     return new Promise(async (resolve, reject) => {
       try {
+        console.log(userData)
         const response = {};
         const userEmail = await user.findOne({ email: userData.email });
         const userPhone = await user.findOne({
@@ -52,6 +51,7 @@ module.exports = {
             .then(async (data) => {
               response.status = false;
               response.phone = userData.phoneNumber;
+              response.email = userData.email;
               const couponCount = await coupons.countDocuments();
               function random() {
                 const num = Math.floor(Math.random() * couponCount);
@@ -62,7 +62,6 @@ module.exports = {
                 .findOne()
                 .skip(randomDoc)
                 .exec(async (err, result) => {
-                  console.log("heyy", result);
                   if(result){
                     await user.updateOne(
                       { phoneNumber: userData.phoneNumber },
@@ -386,7 +385,6 @@ module.exports = {
   verifyPayment: (details) => {
     return new Promise((resolve, reject) => {
       try {
-        console.log('veriyPAYMENT')
         const crypto = require("crypto");
         let expectedSignature = crypto.createHmac(
           "sha256",
@@ -451,7 +449,6 @@ module.exports = {
           orderStatus: "Placed",
           date: date,
         };
-        const cartItem = cartItems[0].productID;
         const newOrder = new orders(orderDetails);
         newOrder.save().then(async (response) => {
           cartItems.map(async (val) => {

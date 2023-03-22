@@ -390,7 +390,6 @@ function placeOrder() {
       if(response.CODstatus){
         location.href = '/ordersuccess/'+response.id
       }else{
-        console.log("payment");
         razorpayPayment(response);
         // req.session.orderID = response.receipt
       }
@@ -404,20 +403,15 @@ function placeOrder() {
 
 
 function razorpayPayment(order) {
-  console.log('razorpay paymentaaaaaaa')
-  console.log(order)
   let options = {
-    key: "rzp_test_scEepl97MNpDhh", // Enter the Key ID generated from the Dashboard
-    amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    key: "rzp_test_scEepl97MNpDhh", // Key ID generated from the Dashboard
+    amount: order.amount,
     currency: "INR",
     name: "Play On",
     description: "Transaction",
     image: "https://example.com/your_logo",
-    order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    order_id: order.id, // Order ID
     handler: function (response) {
-      console.log('helllllllllllllooooooooooo')
-      // alert(response.razorpay_order_id);
-    //   alert(response.razorpay_signature);
       verifyPayment(response, order);
     },
     prefill: {
@@ -432,12 +426,11 @@ function razorpayPayment(order) {
       color: "#3399cc",
     },
   };
-  let rzp1 = new Razorpay(options);
-  rzp1.open();
+  let razorpay = new Razorpay(options);
+  razorpay.open();
+
 
   function verifyPayment(payment, order) {
-    // console.log('verifyyyyyyyyyy',payment)
-    // console.log('verifyyyyyyyyyy',order)
     $.ajax({
       url: "/verify-payment",
       method: "post",
@@ -446,17 +439,13 @@ function razorpayPayment(order) {
         order
       },success:(response)=>{
         if(response.status){
-          setTimeout(() => {
             location.href = '/ordersuccess/'+order.receipt
-          }, 800);
         }else{
-          console.log("response.order",order.receipt)
           $.ajax({
             url: '/paymentfailed/'+response.orderID,
             method: 'get',
             success:(response)=>{
-              // location.href = '/paymentfailed'
-              // alert('payment       failed');
+              location.href = '/paymentfailed'
             },error:(err)=>{
               //handle error
             }
@@ -468,7 +457,7 @@ function razorpayPayment(order) {
     });
   }
 
-  rzp1.on("payment.failed", function (response) {
+  razorpay.on("payment.failed", function (response) {
     $.ajax({
       url: '/paymentfailed/'+response.receipt,
       method: 'get',
@@ -478,14 +467,6 @@ function razorpayPayment(order) {
         // alert('payment       failed');
       }
     })
-
-    // alert(response.error.code);
-    // alert(response.error.description);
-    // alert(response.error.source);
-    // alert(response.error.step);
-    // alert(response.error.reason);
-    // alert(response.error.metadata.order_id);
-    // alert(response.error.metadata.payment_id);
   });
 }
 

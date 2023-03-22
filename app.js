@@ -7,8 +7,6 @@ const hbs = require('express-handlebars')
 const session = require('express-session')
 const adminRouter = require('./routes/admin');
 const usersRouter = require('./routes/users');
-const fs = require('fs');
-const { options } = require('./routes/admin');
 
 
 const app = express();

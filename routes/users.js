@@ -114,12 +114,12 @@ router.post("/userSignedup", (req, res, next) => {
     userHelper
       .addUser(req.body)
       .then((response) => {
-        req.session.mobile = response.phone;
-        req.session.email = response.email;
         if (response.status) {
           req.session.userExist = "User already exists.";
           res.redirect("/toSignup");
         } else {
+          req.session.mobile = response.phone;
+          req.session.email = response.email;
           req.session.otp = response.correctOtp;
           res.redirect("/verifyotp");
         }
@@ -733,10 +733,7 @@ router.post(
             );
             const response = {
               CODstatus: true,
-              id:
-                "64s32gh74dfg87gh2dg34" +
-                req.session.userData._id +
-                "793fg47kjh345",
+              id: req.session.userData._id,
             };
             res.json(response);
           })
@@ -770,12 +767,9 @@ router.post(
 
 //VERIFY PAYMENT
 router.post("/verify-payment", (req, res, next) => {
-  console.log("verify payment");
-  console.log("req.body", req.body);
   userHelper
     .verifyPayment(req.body)
     .then((response) => {
-      console.log(response);
       userHelper
         .changePaymentStatus(req.body["order[receipt]"])
         .then(async () => {

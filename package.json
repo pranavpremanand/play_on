@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
@@ -21,7 +21,6 @@
     "mongoose": "^6.5.3",
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.19",
     "razorpay": "^2.8.3",
     "twilio": "^3.80.1",
     "validator": "^13.7.0"
